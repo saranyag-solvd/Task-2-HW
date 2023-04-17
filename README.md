@@ -1,1 +1,1 @@
-# task-2-hw
+# Task2 HomeWork - Travel Agency System
