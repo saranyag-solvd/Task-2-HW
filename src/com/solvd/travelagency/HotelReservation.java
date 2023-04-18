@@ -72,11 +72,13 @@ public class HotelReservation extends Reservation {
 
     @Override
     public void updateReservation() {
+        this.noOfGuest = 5;
         System.out.println("Hotel reservation updated");
     }
 
     @Override
     public void cancelReservation() {
+        setStatus("Cancelled");
         System.out.println("Hotel reservation cancelled");
     }
 }

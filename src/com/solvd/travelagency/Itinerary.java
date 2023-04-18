@@ -65,11 +65,13 @@ public class Itinerary extends Reservation {
 
     @Override
     public void updateReservation() {
+        this.flight.setSeatNumber("A35");
         System.out.println("Flight reservation updated");
     }
 
     @Override
     public void cancelReservation() {
+        super.setStatus("cancelled");
         System.out.println("Flight reservation cancelled");
     }
 }

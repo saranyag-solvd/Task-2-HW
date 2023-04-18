@@ -60,11 +60,13 @@ public class CarReservation extends Reservation {
 
     @Override
     public void updateReservation() {
+        this.carType = "sedan";
         System.out.println("Car reservation updated");
     }
 
     @Override
     public void cancelReservation() {
+        this.setStatus("cancelled");
         System.out.println("car reservation cancelled");
     }
 }

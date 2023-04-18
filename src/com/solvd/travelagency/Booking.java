@@ -57,10 +57,16 @@ public class Booking {
     }
 
     public void updateBooking(){
+        this.getCustomer().setPhoneNumber("515-650-1245");
+
         System.out.println("Booking updated");
     }
 
     public void cancelBooking(){
+        for(int i = 0; i<this.reservations.size(); i++){
+            this.reservations.get(i).cancelReservation();
+        }
+
         System.out.println("Booking cancelled");
     }
 

@@ -46,7 +46,6 @@ public class TravelAgency {
         // car reservation
         List<Customer> drivers = new ArrayList<>();
         drivers.add(bookingCustomer);
-        //CarReservation(String reservationId, String status, Date fromDate, Date toDate, double amount, String carType, List<Customer> drivers, String carDetails)
         CarReservation carReservation = new CarReservation("cr-676334", "Booked", new Date(), new Date(), 762.85, "suv", drivers, "7seaters");
         carReservation.createReservation();
         carReservation.viewReservation();
