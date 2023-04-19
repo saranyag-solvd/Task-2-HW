@@ -70,10 +70,14 @@ public class HotelReservation extends Reservation {
         System.out.println("Hotel Reservation ID :" + this.getReservationId());
     }
 
-    @Override
-    public void updateReservation() {
-        this.noOfGuest = 5;
+
+    public void updateReservation(int noOfGuest) {
+        updateGuest(noOfGuest);
         System.out.println("Hotel reservation updated");
+    }
+
+    private void updateGuest(int noOfGuest) {
+        this.setNoOfGuest(noOfGuest);
     }
 
     @Override

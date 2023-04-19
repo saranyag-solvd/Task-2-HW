@@ -4,47 +4,54 @@ import java.util.Date;
 import java.util.List;
 
 public class CarReservation extends Reservation {
-    public CarReservation(){
+    public CarReservation() {
 
     }
-    public CarReservation(String carType, List<Customer> drivers, String carDetails){
+
+    public CarReservation(String carType, List<Customer> drivers, String carDetails) {
         this.carType = carType;
         this.drivers = drivers;
         this.carDetails = carDetails;
     }
 
-    public CarReservation(String reservationId, String status, Date fromDate, Date toDate, double amount, String carType, List<Customer> drivers, String carDetails){
-        super( reservationId, status, fromDate, toDate, amount);
+    public CarReservation(String reservationId, String status, Date fromDate, Date toDate, double amount, String carType, List<Customer> drivers, String carDetails) {
+        super(reservationId, status, fromDate, toDate, amount);
         this.carType = carType;
         this.drivers = drivers;
         this.carDetails = carDetails;
 
 
     }
+
     private String carType;
-    private List<Customer>drivers;
+    private List<Customer> drivers;
     private String carDetails;
 
-    public String getCarType(){
+    public String getCarType() {
         return this.carType;
     }
-    public void setCarType(String carType){
+
+    public void setCarType(String carType) {
         this.carType = carType;
     }
-    public List<Customer> getDrivers(){
+
+    public List<Customer> getDrivers() {
         return this.drivers;
     }
-    public void setDrivers(List<Customer> drivers){
+
+    public void setDrivers(List<Customer> drivers) {
         this.drivers = drivers;
     }
-    public String getCarDetails(){
+
+    public String getCarDetails() {
         return this.carDetails;
     }
-    public void setCarDetails(String carDetails){
+
+    public void setCarDetails(String carDetails) {
         this.carDetails = carDetails;
     }
 
-    public void updateDrivers(){
+    public void updateDrivers() {
         System.out.println("Updated drivers");
     }
 
@@ -58,11 +65,16 @@ public class CarReservation extends Reservation {
         System.out.println("Car reservationId:" + super.getReservationId());
     }
 
-    @Override
-    public void updateReservation() {
-        this.carType = "sedan";
+
+    public void updateReservation(String carType) {
+        updateCarType(carType);
         System.out.println("Car reservation updated");
     }
+
+    private void updateCarType(String carType) {
+        this.setCarType(carType);
+    }
+
 
     @Override
     public void cancelReservation() {

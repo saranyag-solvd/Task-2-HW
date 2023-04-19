@@ -39,6 +39,7 @@ public class TravelAgency {
         hotelReservation.createReservation();
         hotelReservation.viewReservation();
         hotelReservation.updateReservation();
+        hotelReservation.updateReservation(5);
         hotelReservation.cancelReservation();
         hotelReservation.checkIn();
         System.out.println("---------------");
@@ -50,6 +51,7 @@ public class TravelAgency {
         carReservation.createReservation();
         carReservation.viewReservation();
         carReservation.updateReservation();
+        carReservation.updateReservation("Sedan");
         carReservation.cancelReservation();
         carReservation.updateDrivers();
         System.out.println("---------------");
@@ -64,6 +66,7 @@ public class TravelAgency {
         flightReservation.createReservation();
         flightReservation.viewReservation();
         flightReservation.updateReservation();
+        flightReservation.updateReservation("A35");
         flightReservation.cancelReservation();
         flightReservation.updatePassengers();
         System.out.println("---------------");
@@ -77,7 +80,7 @@ public class TravelAgency {
         Booking booking = new Booking("b-3456", new Date(), bookingCustomer, reservations, ccPayment);
         booking.createBooking();
         booking.viewBooking();
-        booking.updateBooking();
+        booking.updateBooking("345-435-5869");
         booking.cancelBooking();
 
 

@@ -63,10 +63,14 @@ public class Itinerary extends Reservation {
         System.out.println("Flight reservation Id:" + this.getReservationId());
     }
 
-    @Override
-    public void updateReservation() {
-        this.flight.setSeatNumber("A35");
+
+    public void updateReservation(String seatNumber) {
+        updateSeatNumber(seatNumber);
         System.out.println("Flight reservation updated");
+    }
+
+    private void updateSeatNumber(String seatNumber) {
+        this.flight.setSeatNumber(seatNumber);
     }
 
     @Override
