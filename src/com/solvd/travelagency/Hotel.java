@@ -1,20 +1,15 @@
 package com.solvd.travelagency;
 
 public class Hotel {
-
-    public Hotel() {
-
-    }
+    private String name;
+    private Address address;
+    private String roomNumber;
 
     public Hotel(String name, Address address, String roomNumber) {
         this.name = name;
         this.address = address;
         this.roomNumber = roomNumber;
     }
-
-    private String name;
-    private Address address;
-    private String roomNumber;
 
     public String getName() {
         return this.name;
@@ -41,8 +36,15 @@ public class Hotel {
     }
 
     public void printHotelDetails() {
-        System.out.println("Hotel{ name=" + name + ", address=" + address + ", roomNumber=" + roomNumber + "}");
+        System.out.println("Hotel Details :" + this);
     }
 
-
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "name='" + name + '\'' +
+                ", address=" + address.getAddress() +
+                ", roomNumber='" + roomNumber + '\'' +
+                '}';
+    }
 }

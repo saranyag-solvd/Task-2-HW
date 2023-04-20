@@ -1,9 +1,10 @@
 package com.solvd.travelagency;
 
 public class Flight {
-    public Flight() {
-
-    }
+    private String flightNumber;
+    private String arrivalAirport;
+    private String destinationAirport;
+    private String seatNumber;
 
     public Flight(String flightNumber, String arrivalAirport, String destinationAirport, String seatNumber) {
         this.flightNumber = flightNumber;
@@ -11,11 +12,6 @@ public class Flight {
         this.destinationAirport = destinationAirport;
         this.seatNumber = seatNumber;
     }
-
-    private String flightNumber;
-    private String arrivalAirport;
-    private String destinationAirport;
-    private String seatNumber;
 
     public String getFlightNumber() {
         return this.flightNumber;
@@ -50,6 +46,16 @@ public class Flight {
     }
 
     public void printFlightDetails() {
-        System.out.println("Flight{ flightNumber=" + flightNumber + ", arrivalAirport=" + arrivalAirport + ", destinationAirport=" + destinationAirport + ", seatNumber=" + seatNumber + "}");
+        System.out.println("Flight Details :" + this);
+    }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "flightNumber='" + flightNumber + '\'' +
+                ", arrivalAirport='" + arrivalAirport + '\'' +
+                ", destinationAirport='" + destinationAirport + '\'' +
+                ", seatNumber='" + seatNumber + '\'' +
+                '}';
     }
 }
