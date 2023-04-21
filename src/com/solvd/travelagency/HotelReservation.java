@@ -1,19 +1,13 @@
 package com.solvd.travelagency;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class HotelReservation extends Reservation {
-
-    public HotelReservation() {
-
-    }
-
-    public HotelReservation(String roomType, int noOfGuest, Hotel hotel, String amenities) {
-        this.roomType = roomType;
-        this.noOfGuest = noOfGuest;
-        this.hotel = hotel;
-        this.amenities = amenities;
-    }
+    private String roomType;
+    private int noOfGuest;
+    private Hotel hotel;
+    private String amenities;
 
     public HotelReservation(String reservationId, String status, Date fromDate, Date toDate, double amount, String roomType, int noOfGuest, Hotel hotel, String amenities) {
         super(reservationId, status, fromDate, toDate, amount);
@@ -22,11 +16,6 @@ public class HotelReservation extends Reservation {
         this.hotel = hotel;
         this.amenities = amenities;
     }
-
-    private String roomType;
-    private int noOfGuest;
-    private Hotel hotel;
-    private String amenities;
 
     public String getRoomType() {
         return this.roomType;
@@ -62,21 +51,48 @@ public class HotelReservation extends Reservation {
 
     @Override
     public void createReservation() {
+        super.setStatus("Confirmed");
         System.out.println("Hotel reservation created");
     }
 
     @Override
     public void viewReservation() {
-        System.out.println("Hotel Reservation ID :" + this.getReservationId());
+        System.out.println("Hotel Reservation Details:");
+        System.out.println(super.toString());
+        System.out.println(this);
     }
 
-    @Override
-    public void updateReservation() {
-        System.out.println("Hotel reservation updated");
+    public void updateGuest(int noOfGuest) {
+        this.setNoOfGuest(noOfGuest);
+        System.out.println("Hotel no.of Guests updated");
     }
 
     @Override
     public void cancelReservation() {
+        super.setStatus("Cancelled");
         System.out.println("Hotel reservation cancelled");
+    }
+
+    @Override
+    public String toString() {
+        return "HotelReservation{" +
+                "roomType='" + roomType + '\'' +
+                ", noOfGuest=" + noOfGuest +
+                ", hotel=" + hotel +
+                ", amenities='" + amenities + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HotelReservation that = (HotelReservation) o;
+        return Objects.equals(getRoomType(), that.getRoomType()) && Objects.equals(getReservationId(), that.getReservationId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getRoomType(), getReservationId());
     }
 }

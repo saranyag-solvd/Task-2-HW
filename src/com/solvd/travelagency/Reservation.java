@@ -2,11 +2,12 @@ package com.solvd.travelagency;
 
 import java.util.Date;
 
-public class Reservation {
-
-    public Reservation() {
-
-    }
+public abstract class Reservation {
+    private String reservationId;
+    private String status;
+    private Date fromDate;
+    private Date toDate;
+    private double amount;
 
     public Reservation(String reservationId, String status, Date fromDate, Date toDate, double amount) {
         this.reservationId = reservationId;
@@ -16,17 +17,11 @@ public class Reservation {
         this.amount = amount;
     }
 
-    private String reservationId;
-    private String status;
-    private Date fromDate;
-    private Date toDate;
-    private double amount;
-
     public String getReservationId() {
         return this.reservationId;
     }
 
-    public void setReservationId(String reservationId) {
+    protected void setReservationId(String reservationId) {
         this.reservationId = reservationId;
     }
 
@@ -34,7 +29,7 @@ public class Reservation {
         return this.status;
     }
 
-    public void setStatus(String status) {
+    protected void setStatus(String status) {
         this.status = status;
     }
 
@@ -42,7 +37,7 @@ public class Reservation {
         return this.fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    protected void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
 
@@ -50,7 +45,7 @@ public class Reservation {
         return this.toDate;
     }
 
-    public void setToDate(Date toDate) {
+    protected void setToDate(Date toDate) {
         this.toDate = toDate;
     }
 
@@ -58,29 +53,22 @@ public class Reservation {
         return this.amount;
     }
 
-    public void setAmount(double amount) {
+    protected void setAmount(double amount) {
         this.amount = amount;
     }
 
-    public void createReservation() {
-        System.out.println("reservation created");
+    protected abstract void createReservation();
+
+    protected abstract void viewReservation();
+
+    protected abstract void cancelReservation();
+
+    @Override
+    public String toString() {
+        return "reservationId='" + reservationId + '\'' +
+                ", status='" + status + '\'' +
+                ", fromDate=" + fromDate +
+                ", toDate=" + toDate +
+                ", amount=" + amount;
     }
-
-    public void viewReservation() {
-        System.out.println("reservationId:" + this.reservationId + " status:" + this.status);
-    }
-
-    public void updateReservation() {
-        System.out.println("reservation updated");
-    }
-
-    public void cancelReservation() {
-        System.out.println("reservation cancel");
-    }
-
-    public void checkIn() {
-        System.out.println("Customer checkedIn");
-    }
-
-
 }

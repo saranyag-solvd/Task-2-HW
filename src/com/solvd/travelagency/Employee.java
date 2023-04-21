@@ -1,16 +1,9 @@
 package com.solvd.travelagency;
 
 public class Employee extends Person {
-
-    public Employee() {
-
-    }
-
-    public Employee(int employeeId, int departmentNumber, long salary) {
-        this.employeeId = employeeId;
-        this.departmentNumber = departmentNumber;
-        this.salary = salary;
-    }
+    private int employeeId;
+    private int departmentNumber;
+    private long salary;
 
     public Employee(String name, int age, Address address, int employeeId, int departmentNumber, long salary) {
         super(name, age, address);
@@ -18,10 +11,6 @@ public class Employee extends Person {
         this.departmentNumber = departmentNumber;
         this.salary = salary;
     }
-
-    private int employeeId;
-    private int departmentNumber;
-    private long salary;
 
     public int getEmployeeId() {
         return this.employeeId;
@@ -48,8 +37,11 @@ public class Employee extends Person {
     }
 
     public String getEmployeeDetails() {
-        return "returning employee details";
+        return "Employee Details: Employee{" +
+                "employeeId=" + employeeId +
+                ", departmentNumber=" + departmentNumber +
+                ", salary=" + salary +
+                '}';
     }
-
 
 }

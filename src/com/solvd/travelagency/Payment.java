@@ -1,19 +1,15 @@
 package com.solvd.travelagency;
 
 public class Payment {
-    public Payment() {
-
-    }
+    private String paymentMethod;
+    private String confirmationNumber;
+    private double amount;
 
     public Payment(String paymentMethod, String confirmationNumber, double amount) {
         this.paymentMethod = paymentMethod;
         this.confirmationNumber = confirmationNumber;
         this.amount = amount;
     }
-
-    private String paymentMethod;
-    private String confirmationNumber;
-    private double amount;
 
     public String getPaymentMethod() {
         return this.paymentMethod;
@@ -43,4 +39,6 @@ public class Payment {
     public void printPaymentDetails() {
         System.out.println("Payment{ paymentMethod=" + paymentMethod + ", confirmationNumber=" + confirmationNumber + ", amount=" + amount + "}");
     }
+
+
 }

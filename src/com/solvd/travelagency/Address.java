@@ -1,9 +1,11 @@
 package com.solvd.travelagency;
 
 public class Address {
-    public Address() {
-
-    }
+    private String street;
+    private String city;
+    private String state;
+    private String zipcode;
+    private String country;
 
     public Address(String street, String city, String state, String zipcode, String country) {
         this.street = street;
@@ -12,12 +14,6 @@ public class Address {
         this.zipcode = zipcode;
         this.country = country;
     }
-
-    private String street;
-    private String city;
-    private String state;
-    private String zipcode;
-    private String country;
 
     public String getStreet() {
         return this.street;
