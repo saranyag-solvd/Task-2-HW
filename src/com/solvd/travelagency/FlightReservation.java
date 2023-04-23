@@ -43,7 +43,7 @@ public class FlightReservation extends Reservation {
 
     @Override
     public void createReservation() {
-        super.setStatus("Confirmed");
+        super.setStatus(Status.confirmed);
         System.out.println("Flight reservation created");
     }
 
@@ -61,7 +61,7 @@ public class FlightReservation extends Reservation {
 
     @Override
     public void cancelReservation() {
-        super.setStatus("cancelled");
+        super.setStatus(Status.cancelled);
         System.out.println("Flight reservation cancelled");
     }
 
