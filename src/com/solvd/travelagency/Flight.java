@@ -1,6 +1,6 @@
 package com.solvd.travelagency;
 
-public class Flight {
+public class Flight implements ICheckIn,IPrintInfo{
     private String flightNumber;
     private String arrivalAirport;
     private String destinationAirport;
@@ -45,9 +45,7 @@ public class Flight {
         this.seatNumber = seatNumber;
     }
 
-    public void printFlightDetails() {
-        System.out.println("Flight Details :" + this);
-    }
+
 
     @Override
     public String toString() {
@@ -57,5 +55,20 @@ public class Flight {
                 ", destinationAirport='" + destinationAirport + '\'' +
                 ", seatNumber='" + seatNumber + '\'' +
                 '}';
+    }
+
+    @Override
+    public void checkIn() {
+        System.out.println("Checked into Flight");
+    }
+
+    @Override
+    public void allowIn() {
+        System.out.println("Allowed inside Aircraft");
+    }
+
+    @Override
+    public void printDetails() {
+        System.out.println("Printing Flight Details :" + this);
     }
 }
