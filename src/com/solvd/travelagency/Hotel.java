@@ -1,6 +1,6 @@
 package com.solvd.travelagency;
 
-public class Hotel implements ICheckIn, ICheckOut,IPrintInfo{
+public class Hotel implements ICheckIn, ICheckOut, IPrintInfo {
     private String name;
     private Address address;
     private String roomNumber;
@@ -62,6 +62,6 @@ public class Hotel implements ICheckIn, ICheckOut,IPrintInfo{
 
     @Override
     public void printDetails() {
-        System.out.println("Printing Hotel Details :" + this );
+        System.out.println("Printing Hotel Details :" + this);
     }
 }

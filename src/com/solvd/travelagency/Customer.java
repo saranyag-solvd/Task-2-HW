@@ -1,7 +1,5 @@
 package com.solvd.travelagency;
 
-import java.util.Objects;
-
 public class Customer extends Person {
     private int customerId;
     private String phoneNumber;

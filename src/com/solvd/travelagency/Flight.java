@@ -1,6 +1,6 @@
 package com.solvd.travelagency;
 
-public class Flight implements ICheckIn,IPrintInfo{
+public class Flight implements ICheckIn, IPrintInfo {
     private String flightNumber;
     private String arrivalAirport;
     private String destinationAirport;
@@ -44,7 +44,6 @@ public class Flight implements ICheckIn,IPrintInfo{
     public void setSeatNumber(String seatNumber) {
         this.seatNumber = seatNumber;
     }
-
 
 
     @Override

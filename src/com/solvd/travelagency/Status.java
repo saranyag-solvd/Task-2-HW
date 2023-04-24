@@ -9,7 +9,7 @@ public final class Status {
         System.out.println("Inside static block in Status");
     }
 
-    public final void printAvailableStatus(){
+    public final void printAvailableStatus() {
         System.out.println("Available Statuses :" + this);
     }
 

@@ -1,9 +1,5 @@
 package com.solvd.travelagency;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 public class TravelAgency {
 
     public static void main(String[] args) {
@@ -20,8 +16,6 @@ public class TravelAgency {
         System.out.println("Customer Details :" + customer1.getCustomerDetails());
         Customer customer2 = new Customer("Mike Doe", 18, custAddress, 2, "987-654-4321", "customer2@test.com");
         System.out.println("---------------");
-
-
 
 
         //hotel reservation
@@ -90,7 +84,7 @@ public class TravelAgency {
         Admin admin = new Admin();
         admin.recruitEmployee(agent);
         admin.changeSalary(agent.getEmployeeId());
-        System.out.println("Admin:" +admin.getEmployees());
+        System.out.println("Admin:" + admin.getEmployees());
         System.out.println("---------------");
 
         Util.printAvailableStatuses();
