@@ -1,6 +1,10 @@
 package com.solvd.travelagency;
 
+
+//import org.apache.logging.log4j.core.Logger;
+
 public class TravelAgency {
+//    private static Logger logger = Logger.getLogger(TravelAgency.class);
 
     public static void main(String[] args) {
 
@@ -8,6 +12,7 @@ public class TravelAgency {
         Payment ccPayment = new Payment("CreditCard", "c-1234", 178.90);
         ccPayment.printDetails();
         System.out.println("---------------");
+//        logger.debug("test12324---------------");
 
         //Create Customer
         Address custAddress = new Address("123 main st", "New York", "NY", "15632", "USA");
@@ -26,7 +31,7 @@ public class TravelAgency {
         hotel.allowIn();
         hotel.checkOut();
         hotel.printDetails();
-        HotelReservation hotelReservation = new HotelReservation("hr-8765", Status.booked, Util.getDateFromStr("05/13/2023"), Util.getDateFromStr("05/17/2023"), 589.65, "Suite", 4, hotel, "Swimming pool, gym");
+        HotelReservation hotelReservation = new HotelReservation("hr-8765", Status.BOOKED, Util.getDateFromStr("05/13/2023"), Util.getDateFromStr("05/17/2023"), 589.65, "Suite", 4, hotel, "Swimming pool, gym");
         hotelReservation.createReservation();
         hotelReservation.updateGuest(5);
         hotelReservation.viewReservation();
@@ -34,7 +39,7 @@ public class TravelAgency {
         System.out.println("---------------");
 
         // car reservation
-        CarReservation carReservation = new CarReservation("cr-676334", Status.booked, Util.getDateFromStr("05/13/2023"), Util.getDateFromStr("05/17/2023"), 400.50, "suv", "7seaters");
+        CarReservation carReservation = new CarReservation("cr-676334", Status.BOOKED, Util.getDateFromStr("05/13/2023"), Util.getDateFromStr("05/17/2023"), 400.50, "suv", "7seaters");
         carReservation.addDriver(customer1);
         carReservation.addDriver(customer2);
         carReservation.removeDriver(customer2);
@@ -49,7 +54,7 @@ public class TravelAgency {
         flight.checkIn();
         flight.allowIn();
         flight.printDetails();
-        FlightReservation flightReservation = new FlightReservation("Fr-1388", Status.booked, Util.getDateFromStr("05/12/2023"), Util.getDateFromStr("05/17/2023"), 800.00, 1234567, flight);
+        FlightReservation flightReservation = new FlightReservation("Fr-1388", Status.BOOKED, Util.getDateFromStr("05/12/2023"), Util.getDateFromStr("05/17/2023"), 800.00, 1234567, flight);
         flightReservation.addPassenger(customer1);
         flightReservation.addPassenger(customer2);
         flightReservation.removePassenger(customer1);
@@ -78,13 +83,16 @@ public class TravelAgency {
         //Create Employee
         Address empAddress = new Address("12 robert st", "Hartford", "CT", "34343", "USA");
         System.out.println("Employee Address :" + empAddress.getAddress());
-        Employee agent = new Employee("Adam Smith", 47, empAddress, 101, 2, 50000);
+        Employee agent = new Employee("Adam Smith", 34, empAddress, 101, 2, 50000);
         System.out.println("Employee Details :" + agent.getEmployeeDetails());
 
-        Admin admin = new Admin();
-        admin.recruitEmployee(agent);
-        admin.changeSalary(agent.getEmployeeId());
-        System.out.println("Admin:" + admin.getEmployees());
+        //Create Manager
+        Address mgrAddress = new Address("26 grove st", "Boston", "MA", "01233", "USA");
+        System.out.println("Manager Address :" + mgrAddress.getAddress());
+        Manager manager = new Manager("Sam Adams", 47, mgrAddress, 100, 1, 120000);
+        manager.recruitEmployee(agent);
+        manager.changeSalary(agent.getEmployeeId());
+        System.out.println("Manager :" + manager.getEmployees());
         System.out.println("---------------");
 
         Util.printAvailableStatuses();

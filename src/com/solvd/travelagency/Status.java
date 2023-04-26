@@ -1,9 +1,9 @@
 package com.solvd.travelagency;
 
 public final class Status {
-    public static final String booked = "BOOKED";
-    public static final String confirmed = "CONFIRMED";
-    public static final String cancelled = "CANCELLED";
+    public static final String BOOKED = "BOOKED";
+    public static final String CONFIRMED = "CONFIRMED";
+    public static final String CANCELLED = "CANCELLED";
 
     static {
         System.out.println("Inside static block in Status");
@@ -16,9 +16,9 @@ public final class Status {
     @Override
     public String toString() {
         return "Status{" +
-                "booked='" + booked + '\'' +
-                ", confirmed='" + confirmed + '\'' +
-                ", cancelled='" + cancelled + '\'' +
+                "BOOKED='" + BOOKED + '\'' +
+                ", CONFIRMED='" + CONFIRMED + '\'' +
+                ", CANCELLED='" + CANCELLED + '\'' +
                 '}';
     }
 }

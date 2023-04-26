@@ -3,12 +3,14 @@ package com.solvd.travelagency;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Admin implements IAdminOperation {
+public class Manager extends Employee implements IAdminOperation {
     private List<Employee> employees;
 
-    public Admin() {
+    public Manager(String name, int age, Address address, int employeeId, int departmentNumber, long salary) {
+        super(name, age, address, employeeId, departmentNumber, salary);
         this.employees = new ArrayList<>();
     }
+
 
     public List<Employee> getEmployees() {
         return employees;

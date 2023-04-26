@@ -51,7 +51,7 @@ public class HotelReservation extends Reservation {
 
     @Override
     public void createReservation() {
-        super.setStatus(Status.confirmed);
+        super.setStatus(Status.CONFIRMED);
         System.out.println("Hotel reservation created");
     }
 
@@ -69,7 +69,7 @@ public class HotelReservation extends Reservation {
 
     @Override
     public void cancelReservation() {
-        super.setStatus(Status.cancelled);
+        super.setStatus(Status.CANCELLED);
         System.out.println("Hotel reservation cancelled");
     }
 

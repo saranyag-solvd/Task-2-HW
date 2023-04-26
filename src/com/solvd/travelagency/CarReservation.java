@@ -43,7 +43,7 @@ public class CarReservation extends Reservation {
 
     @Override
     public void createReservation() {
-        super.setStatus(Status.confirmed);
+        super.setStatus(Status.CONFIRMED);
         System.out.println("Car reservation created");
     }
 
@@ -61,7 +61,7 @@ public class CarReservation extends Reservation {
 
     @Override
     public void cancelReservation() {
-        this.setStatus(Status.cancelled);
+        this.setStatus(Status.CANCELLED);
         System.out.println("car reservation cancelled");
     }
 
