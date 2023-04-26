@@ -10,7 +10,7 @@ Customer Address :Address{street='123 main st', city='New York', state='NY', zip
 Customer Details :Customer Details :Customer{customerId=1, phoneNumber='123-456-7890', emailAddress='customer1@test.com'}
 ---------------
 Hotel Address :Address{street='999 Boston st', city='Chicago', state='IL', zipcode='87343', country='USA'}
-Checked into Hotel
+Checked in at Hotel Lobby. Room key issued.
 Allowed into Hotel Room
 Checked out of Hotel
 Printing Hotel Details :Hotel{name='Marriot', address=Address{street='999 Boston st', city='Chicago', state='IL', zipcode='87343', country='USA'}, roomNumber='43B'}
@@ -31,8 +31,8 @@ reservationId='cr-676334', status='CONFIRMED', fromDate=Sat May 13 00:00:00 EDT 
 CarReservation{carType='Sedan', drivers=[Customer{customerId=1, phoneNumber='123-456-7890', emailAddress='customer1@test.com'}], carDetails='7seaters'}
 car reservation cancelled
 ---------------
-Checked into Flight
-Allowed inside Aircraft
+Checked in at the Terminal. Boarding Pass issued.
+Security check completed. Allowed inside Aircraft
 Printing Flight Details :Flight{flightNumber='F0145', arrivalAirport='Logan International', destinationAirport='JFK', seatNumber='F26'}
 passenger added
 passenger added
@@ -48,7 +48,7 @@ Hotel reservation created
 Car reservation created
 Flight reservation created
 Booking created
-Booking Details :Booking{bookingId='b-3456', date=Sun Apr 23 15:43:39 EDT 2023, customer=Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}, reservations=[HotelReservation{roomType='Suite', noOfGuest=5, hotel=Hotel{name='Marriot', address=Address{street='999 Boston st', city='Chicago', state='IL', zipcode='87343', country='USA'}, roomNumber='43B'}, amenities='Swimming pool, gym'}, CarReservation{carType='Sedan', drivers=[Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}], carDetails='7seaters'}, FlightReservation{pnrNumber=1234567, flight=Flight{flightNumber='F0145', arrivalAirport='Logan International', destinationAirport='JFK', seatNumber='A35'}, passengers=[Customer{customerId=2, phoneNumber='987-654-4321', emailAddress='customer2@test.com'}]}], payment=com.solvd.travelagency.Payment@2503dbd3}
+Booking Details :Booking{bookingId='b-3456', date=Wed Apr 26 13:01:46 EDT 2023, customer=Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}, reservations=[HotelReservation{roomType='Suite', noOfGuest=5, hotel=Hotel{name='Marriot', address=Address{street='999 Boston st', city='Chicago', state='IL', zipcode='87343', country='USA'}, roomNumber='43B'}, amenities='Swimming pool, gym'}, CarReservation{carType='Sedan', drivers=[Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}], carDetails='7seaters'}, FlightReservation{pnrNumber=1234567, flight=Flight{flightNumber='F0145', arrivalAirport='Logan International', destinationAirport='JFK', seatNumber='A35'}, passengers=[Customer{customerId=2, phoneNumber='987-654-4321', emailAddress='customer2@test.com'}]}], payment=com.solvd.travelagency.Payment@29453f44}
 Hotel reservation cancelled
 car reservation cancelled
 Flight reservation cancelled
@@ -56,9 +56,10 @@ Booking cancelled
 ---------------
 Employee Address :Address{street='12 robert st', city='Hartford', state='CT', zipcode='34343', country='USA'}
 Employee Details :Employee Details: Employee{employeeId=101, departmentNumber=2, salary=50000}
+Manager Address :Address{street='26 grove st', city='Boston', state='MA', zipcode='01233', country='USA'}
 Employee added
-Admin:[Employee{employeeId=101, departmentNumber=2, salary=55000}]
+Manager :[Employee{employeeId=101, departmentNumber=2, salary=55000}]
 ---------------
 Inside static block in Status
-Available Statuses :Status{booked='BOOKED', confirmed='CONFIRMED', cancelled='CANCELLED'}
+Available Statuses :Status{BOOKED='BOOKED', CONFIRMED='CONFIRMED', CANCELLED='CANCELLED'}
 ```
