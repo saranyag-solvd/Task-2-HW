@@ -47,7 +47,7 @@ public class Hotel implements ICheckIn, ICheckOut, IPrintInfo {
 
     @Override
     public void checkIn() {
-        System.out.println("Checked into Hotel");
+        System.out.println("Checked in at Hotel Lobby. Room key issued.");
     }
 
     @Override

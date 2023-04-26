@@ -58,12 +58,12 @@ public class Flight implements ICheckIn, IPrintInfo {
 
     @Override
     public void checkIn() {
-        System.out.println("Checked into Flight");
+        System.out.println("Checked in at the Terminal. Boarding Pass issued.");
     }
 
     @Override
     public void allowIn() {
-        System.out.println("Allowed inside Aircraft");
+        System.out.println("Security check completed. Allowed inside Aircraft");
     }
 
     @Override
