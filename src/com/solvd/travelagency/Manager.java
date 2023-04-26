@@ -1,37 +1,27 @@
 package com.solvd.travelagency;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Manager extends Employee implements IAdminOperation {
-    private List<Employee> employees;
 
     public Manager(String name, int age, Address address, int employeeId, int departmentNumber, long salary) {
         super(name, age, address, employeeId, departmentNumber, salary);
-        this.employees = new ArrayList<>();
-    }
-
-
-    public List<Employee> getEmployees() {
-        return employees;
     }
 
     @Override
-    public void recruitEmployee(Employee employees) {
-        this.employees.add(employees);
-        System.out.println("Employee added");
+    public void recruitEmployee(List<Employee> employees, Employee employee) {
+        employees.add(employee);
+        System.out.println("Employee " + employee.getEmployeeId() + " recruited");
     }
 
-
     @Override
-    public void changeSalary(int employeeId) {
-        for (int i = 0; i < this.employees.size(); i++) {
-            Employee emp = this.employees.get(i);
+    public void changeSalary(List<Employee> employees, int employeeId, long newSalary) {
+        for (int i = 0; i < employees.size(); i++) {
+            Employee emp = employees.get(i);
             if (emp.getEmployeeId() == employeeId) {
-                emp.setSalary(emp.getSalary() + 5000);
+                emp.setSalary(newSalary);
+                System.out.println("Employee " + employeeId + " Salary updated to " + newSalary);
             }
-
-
         }
     }
 }

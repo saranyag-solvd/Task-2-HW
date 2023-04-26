@@ -1,9 +1,11 @@
 package com.solvd.travelagency;
 
-public interface IAdminOperation {
-    void recruitEmployee(Employee employee);
+import java.util.List;
 
-    void changeSalary(int employeeId);
+public interface IAdminOperation {
+    void recruitEmployee(List<Employee> employees, Employee employee);
+
+    void changeSalary(List<Employee> employees, int employeeId, long newSalary);
 
 }
 
