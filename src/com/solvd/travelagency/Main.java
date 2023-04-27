@@ -2,7 +2,7 @@ package com.solvd.travelagency;
 
 
 public class Main {
-
+    //    private static final Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args) {
 
         //Create Manager
@@ -103,10 +103,10 @@ public class Main {
         //Add employee
         agency.addEmployee(manager);
         //Recruit employees
-        manager.recruitEmployee(agency.getEmployees(), emp1);
-        manager.recruitEmployee(agency.getEmployees(), emp2);
-        manager.recruitEmployee(agency.getEmployees(), emp3);
-        manager.changeSalary(agency.getEmployees(), emp1.getEmployeeId(), 60000);
+        manager.recruitEmployee(agency, emp1);
+        manager.recruitEmployee(agency, emp2);
+        manager.recruitEmployee(agency, emp3);
+        manager.changeSalary(agency.getEmployees().get(1), 60000);
         agency.printEmployees();
 
         //Add flights
