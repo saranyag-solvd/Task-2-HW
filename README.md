@@ -3,6 +3,7 @@
 Class with Main Method - TravelAgency.java
 
 ### Main method output
+
 ```
 Manager Address :Address{street='26 grove st', city='Boston', state='MA', zipcode='01233', country='USA'}
 Manager Details :Employee Details: Employee{employeeId=1, departmentNumber=1, salary=120000}
@@ -57,15 +58,12 @@ Hotel reservation created
 Car reservation created
 Flight reservation created
 Booking created
-Booking Details :Booking{bookingId='b-3456', date=Wed Apr 26 18:06:47 EDT 2023, customer=Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}, reservations=[HotelReservation{roomType='Suite', noOfGuest=5, hotel=Hotel{name='Marriot', address=Address{street='999 Boston st', city='Chicago', state='IL', zipcode='87343', country='USA'}, roomNumber='43B'}, amenities='Swimming pool, gym'}, CarReservation{carType='Sedan', drivers=[Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}], carDetails='7seaters'}, FlightReservation{pnrNumber=1234567, flight=Flight{flightNumber='F0145', arrivalAirport='Logan International', destinationAirport='JFK', seatNumber='A35'}, passengers=[Customer{customerId=2, phoneNumber='987-654-4321', emailAddress='customer2@test.com'}]}], payment=com.solvd.travelagency.Payment@29453f44}
+Booking Details :Booking{bookingId='b-3456', date=Thu Apr 27 12:25:58 EDT 2023, customer=Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}, reservations=[HotelReservation{roomType='Suite', noOfGuest=5, hotel=Hotel{name='Marriot', address=Address{street='999 Boston st', city='Chicago', state='IL', zipcode='87343', country='USA'}, roomNumber='43B'}, amenities='Swimming pool, gym'}, CarReservation{carType='Sedan', drivers=[Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}], carDetails='7seaters'}, FlightReservation{pnrNumber=1234567, flight=Flight{flightNumber='F0145', arrivalAirport='Logan International', destinationAirport='JFK', seatNumber='A35'}, passengers=[Customer{customerId=2, phoneNumber='987-654-4321', emailAddress='customer2@test.com'}]}], payment=com.solvd.travelagency.Payment@29453f44}
 Hotel reservation cancelled
 car reservation cancelled
 Flight reservation cancelled
 Booking cancelled
 ---------------
-Employee 101 added to Agency
-Employee 102 added to Agency
-Employee 103 added to Agency
 Employee 101 Salary updated to 60000
 Employee{employeeId=1, departmentNumber=1, salary=120000}
 Employee{employeeId=101, departmentNumber=2, salary=60000}
@@ -73,8 +71,9 @@ Employee{employeeId=102, departmentNumber=2, salary=40000}
 Employee{employeeId=103, departmentNumber=2, salary=48000}
 Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}
 Customer{customerId=2, phoneNumber='987-654-4321', emailAddress='customer2@test.com'}
-Booking{bookingId='b-3456', date=Wed Apr 26 18:06:47 EDT 2023, customer=Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}, reservations=[HotelReservation{roomType='Suite', noOfGuest=5, hotel=Hotel{name='Marriot', address=Address{street='999 Boston st', city='Chicago', state='IL', zipcode='87343', country='USA'}, roomNumber='43B'}, amenities='Swimming pool, gym'}, CarReservation{carType='Sedan', drivers=[Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}], carDetails='7seaters'}, FlightReservation{pnrNumber=1234567, flight=Flight{flightNumber='F0145', arrivalAirport='Logan International', destinationAirport='JFK', seatNumber='A35'}, passengers=[Customer{customerId=2, phoneNumber='987-654-4321', emailAddress='customer2@test.com'}]}], payment=com.solvd.travelagency.Payment@29453f44}
+Booking{bookingId='b-3456', date=Thu Apr 27 12:25:58 EDT 2023, customer=Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}, reservations=[HotelReservation{roomType='Suite', noOfGuest=5, hotel=Hotel{name='Marriot', address=Address{street='999 Boston st', city='Chicago', state='IL', zipcode='87343', country='USA'}, roomNumber='43B'}, amenities='Swimming pool, gym'}, CarReservation{carType='Sedan', drivers=[Customer{customerId=1, phoneNumber='345-435-5869', emailAddress='customer1@test.com'}], carDetails='7seaters'}, FlightReservation{pnrNumber=1234567, flight=Flight{flightNumber='F0145', arrivalAirport='Logan International', destinationAirport='JFK', seatNumber='A35'}, passengers=[Customer{customerId=2, phoneNumber='987-654-4321', emailAddress='customer2@test.com'}]}], payment=com.solvd.travelagency.Payment@29453f44}
 ---------------
 Inside static block in Status
 Available Statuses :Status{BOOKED='BOOKED', CONFIRMED='CONFIRMED', CANCELLED='CANCELLED'}
+
 ```
