@@ -1,6 +1,6 @@
 package com.solvd.travelagency;
 
-public class Payment {
+public class Payment implements IPrintInfo {
     private String paymentMethod;
     private String confirmationNumber;
     private double amount;
@@ -35,10 +35,8 @@ public class Payment {
         this.amount = amount;
     }
 
-
-    public void printPaymentDetails() {
+    @Override
+    public void printDetails() {
         System.out.println("Payment{ paymentMethod=" + paymentMethod + ", confirmationNumber=" + confirmationNumber + ", amount=" + amount + "}");
     }
-
-
 }

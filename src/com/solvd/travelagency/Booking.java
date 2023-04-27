@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Booking {
+public class Booking implements IBookingOperation {
     private String bookingId;
     private Date date;
     private Customer customer;
@@ -60,6 +60,7 @@ public class Booking {
         this.payment = payment;
     }
 
+    @Override
     public void createBooking() {
         for (int i = 0; i < this.reservations.size(); i++) {
             this.reservations.get(i).createReservation();
@@ -71,6 +72,7 @@ public class Booking {
         this.customer.setPhoneNumber(phoneNumber);
     }
 
+    @Override
     public void cancelBooking() {
         for (int i = 0; i < this.reservations.size(); i++) {
             this.reservations.get(i).cancelReservation();
@@ -79,11 +81,13 @@ public class Booking {
         System.out.println("Booking cancelled");
     }
 
+    @Override
     public void viewBooking() {
         System.out.println("Booking Details :" + this);
     }
 
     public void addReservation(Reservation reservation) {
+
         this.reservations.add(reservation);
     }
 
