@@ -1,5 +1,7 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.exceptions.DriverException;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -70,7 +72,10 @@ public class CarReservation extends Reservation {
         System.out.println("Car Driver Added");
     }
 
-    public void removeDriver(Customer driver) {
+    public void removeDriver(Customer driver) throws DriverException {
+        if (driver == null) {
+            throw new DriverException("Invalid Driver");
+        }
         this.drivers.remove(driver);
         System.out.println("Car Driver Removed");
     }

@@ -1,5 +1,7 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.exceptions.BookingException;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -47,9 +49,9 @@ public class Booking implements IBookingOperation {
         return this.reservations;
     }
 
-    // public void setReservations(List<Reservation> reservations) {
-    //    this.reservations = reservations;
-    //}
+     public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 
 
     public Payment getPayment() {
@@ -73,7 +75,10 @@ public class Booking implements IBookingOperation {
     }
 
     @Override
-    public void cancelBooking() {
+    public void cancelBooking() throws BookingException {
+        if(this.reservations == null || this.reservations.size() == 0){
+            throw new BookingException("No reservation found to cancel");
+        }
         for (int i = 0; i < this.reservations.size(); i++) {
             this.reservations.get(i).cancelReservation();
         }
@@ -91,6 +96,9 @@ public class Booking implements IBookingOperation {
         this.reservations.add(reservation);
     }
 
+    public void printInvoice(){
+        Util.printFile(this.bookingId);
+    }
     @Override
     public String toString() {
         return "Booking{" +

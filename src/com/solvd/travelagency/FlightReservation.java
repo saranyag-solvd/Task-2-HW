@@ -1,5 +1,7 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.exceptions.PassengerException;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -70,7 +72,11 @@ public class FlightReservation extends Reservation {
         System.out.println("passenger added");
     }
 
-    public void removePassenger(Customer passenger) {
+    public void removePassenger(Customer passenger) throws PassengerException {
+        if(passenger == null){
+            throw new PassengerException("Invalid Passenger");
+        }
+
         this.passengers.remove(passenger);
         System.out.println("passenger removed");
     }

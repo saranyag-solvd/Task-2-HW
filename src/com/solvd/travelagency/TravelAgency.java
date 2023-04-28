@@ -1,5 +1,7 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.exceptions.TravelAgencyException;
+
 import java.util.ArrayList;
 
 public final class TravelAgency {
@@ -52,7 +54,10 @@ public final class TravelAgency {
         customers.add(customer);
     }
 
-    public void addEmployee(Employee employee) {
+    public void addEmployee(Employee employee) throws TravelAgencyException {
+        if (employee == null) {
+            throw new TravelAgencyException("Invalid Employee");
+        }
         employees.add(employee);
 
     }
