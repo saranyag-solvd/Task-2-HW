@@ -49,7 +49,7 @@ public class Booking implements IBookingOperation {
         return this.reservations;
     }
 
-     public void setReservations(List<Reservation> reservations) {
+    public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
 
@@ -76,7 +76,7 @@ public class Booking implements IBookingOperation {
 
     @Override
     public void cancelBooking() throws BookingException {
-        if(this.reservations == null || this.reservations.size() == 0){
+        if (this.reservations == null || this.reservations.size() == 0) {
             throw new BookingException("No reservation found to cancel");
         }
         for (int i = 0; i < this.reservations.size(); i++) {
@@ -96,9 +96,10 @@ public class Booking implements IBookingOperation {
         this.reservations.add(reservation);
     }
 
-    public void printInvoice(){
+    public void printInvoice() {
         Util.printFile(this.bookingId);
     }
+
     @Override
     public String toString() {
         return "Booking{" +
