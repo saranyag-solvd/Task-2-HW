@@ -73,7 +73,7 @@ public class FlightReservation extends Reservation {
     }
 
     public void removePassenger(Customer passenger) throws PassengerException {
-        if(passenger == null){
+        if (passenger == null || !this.passengers.contains(passenger)) {
             throw new PassengerException("Invalid Passenger");
         }
 

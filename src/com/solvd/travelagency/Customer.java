@@ -1,5 +1,7 @@
 package com.solvd.travelagency;
 
+import java.util.Objects;
+
 public class Customer extends Person {
     private int customerId;
     private String phoneNumber;
@@ -38,6 +40,19 @@ public class Customer extends Person {
 
     public String getCustomerDetails() {
         return "Customer Details :" + this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return getCustomerId() == customer.getCustomerId() && Objects.equals(getEmailAddress(), customer.getEmailAddress());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCustomerId(), getEmailAddress());
     }
 
     @Override

@@ -73,7 +73,7 @@ public class CarReservation extends Reservation {
     }
 
     public void removeDriver(Customer driver) throws DriverException {
-        if (driver == null) {
+        if (driver == null || !this.drivers.contains(driver)) {
             throw new DriverException("Invalid Driver");
         }
         this.drivers.remove(driver);
