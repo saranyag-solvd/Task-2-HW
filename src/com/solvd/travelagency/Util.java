@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Util {
-    private static final Logger logger = LogManager.getLogger(Util.class);
+    private static final Logger LOGGER = LogManager.getLogger(Util.class);
 
     public static void printAvailableStatuses() {
         Status status = new Status();
@@ -41,13 +41,13 @@ public class Util {
             BufferedReader br = new BufferedReader(fileReader);
             printFile(br);
         } catch (IOException e) {
-            logger.error("Exception caught : " + e);
+            LOGGER.error("Exception caught : " + e);
         } finally {
             if (fileReader != null) {
                 try {
                     fileReader.close();
                 } catch (IOException e) {
-                    logger.error("Exception in finally : " + e);
+                    LOGGER.error("Exception in finally : " + e);
                 }
             }
         }
@@ -64,7 +64,7 @@ public class Util {
             BufferedReader br = new BufferedReader(fileReader);
             printFile(br);
         } catch (IOException e) {
-            logger.error("Exception caught in try with resources : " + e);
+            LOGGER.error("Exception caught in try with resources : " + e);
         }
     }
 

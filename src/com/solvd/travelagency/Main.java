@@ -8,45 +8,45 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 
 public class Main {
-    private static final Logger logger = LogManager.getLogger(Main.class);
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
 
         //Create Manager
         Address mgrAddress = new Address("26 grove st", "Boston", "MA", "01233", "USA");
-        logger.debug("Manager Address :" + mgrAddress.getAddress());
+        LOGGER.debug("Manager Address :" + mgrAddress.getAddress());
         Manager manager = new Manager("Sam Adams", 47, mgrAddress, 1, 1, 120000);
-        logger.debug("Manager Details :" + manager.getEmployeeDetails());
+        LOGGER.debug("Manager Details :" + manager.getEmployeeDetails());
 
         //Create Employees
         Address empAddress = new Address("12 robert st", "Hartford", "CT", "34343", "USA");
-        logger.debug("Employee Address :" + empAddress.getAddress());
+        LOGGER.debug("Employee Address :" + empAddress.getAddress());
         Employee emp1 = new Employee("Adam Smith", 37, empAddress, 101, 2, 50000);
         Employee emp2 = new Employee("Rick Smith", 19, empAddress, 102, 2, 40000);
         Employee emp3 = new Employee("Jane Smith", 31, empAddress, 103, 2, 48000);
-        logger.debug("Employee 1 Details :" + emp1.getEmployeeDetails());
-        logger.debug("Employee 2 Details :" + emp2.getEmployeeDetails());
-        logger.debug("Employee 3 Details :" + emp3.getEmployeeDetails());
-        logger.debug("---------------");
+        LOGGER.debug("Employee 1 Details :" + emp1.getEmployeeDetails());
+        LOGGER.debug("Employee 2 Details :" + emp2.getEmployeeDetails());
+        LOGGER.debug("Employee 3 Details :" + emp3.getEmployeeDetails());
+        LOGGER.debug("---------------");
 
         //Create Customer
         Address custAddress = new Address("123 main st", "New York", "NY", "15632", "USA");
-        logger.debug("Customer Address :" + custAddress.getAddress());
+        LOGGER.debug("Customer Address :" + custAddress.getAddress());
         Customer customer1 = new Customer("John Doe", 22, custAddress, 1, "123-456-7890", "customer1@test.com");
         Customer customer2 = new Customer("Mike Doe", 18, custAddress, 2, "987-654-4321", "customer2@test.com");
-        logger.debug("Customer 1 Details :" + customer1.getCustomerDetails());
-        logger.debug("Customer 2 Details :" + customer2.getCustomerDetails());
-        logger.debug("---------------");
+        LOGGER.debug("Customer 1 Details :" + customer1.getCustomerDetails());
+        LOGGER.debug("Customer 2 Details :" + customer2.getCustomerDetails());
+        LOGGER.debug("---------------");
 
 
         //Create Payment
         Payment ccPayment = new Payment("CreditCard", "c-1234", 178.90);
         ccPayment.printDetails();
-        logger.debug("---------------");
+        LOGGER.debug("---------------");
 
         //hotel reservation
         Address hotelAddress = new Address("999 Boston st", "Chicago", "IL", "87343", "USA");
-        logger.debug("Hotel Address :" + hotelAddress.getAddress());
+        LOGGER.debug("Hotel Address :" + hotelAddress.getAddress());
         Hotel hotel = new Hotel("Marriot", hotelAddress, "43B");
         hotel.checkIn();
         hotel.allowIn();
@@ -57,7 +57,7 @@ public class Main {
         hotelReservation.updateGuest(5);
         hotelReservation.viewReservation();
         hotelReservation.cancelReservation();
-        logger.debug("---------------");
+        LOGGER.debug("---------------");
 
         // car reservation
         CarReservation carReservation = new CarReservation("cr-676334", Status.BOOKED, Util.getDateFromStr("05/13/2023"), Util.getDateFromStr("05/17/2023"), 400.50, "suv", "7seaters");
@@ -70,8 +70,8 @@ public class Main {
         carReservation.cancelReservation();
 
         CarReservation carReservation2 = new CarReservation("cr-676334", Status.BOOKED, Util.getDateFromStr("05/23/2023"), Util.getDateFromStr("05/29/2023"), 900.0, "Sedan", "electric");
-        logger.debug("Car Reservations equal ? " + carReservation.equals(carReservation2));
-        logger.debug("---------------");
+        LOGGER.debug("Car Reservations equal ? " + carReservation.equals(carReservation2));
+        LOGGER.debug("---------------");
 
         // flight reservation
         Flight flight = new Flight("F0145", "Logan International", "JFK", "F26");
@@ -85,13 +85,13 @@ public class Main {
         try {
             flightReservation.removePassenger(customer1);
         } catch (PassengerException e) {
-            logger.error("Exception:"+e);
+            LOGGER.error("Exception:" + e);
         }
         flightReservation.createReservation();
         flightReservation.updateSeatNumber("A35");
         flightReservation.viewReservation();
         flightReservation.cancelReservation();
-        logger.debug("---------------");
+        LOGGER.debug("---------------");
 
 
         // Create Booking
@@ -109,9 +109,9 @@ public class Main {
         try {
             booking.cancelBooking();
         } catch (BookingException e) {
-
+            LOGGER.error("Exception:" + e);
         }
-        logger.debug("---------------");
+        LOGGER.debug("---------------");
 
 
         //Travel Agency
@@ -121,7 +121,7 @@ public class Main {
         try {
             agency.addEmployee(manager);
         } catch (TravelAgencyException e) {
-            logger.error("Exception:" + e);
+            LOGGER.error("Exception:" + e);
         }
         //Recruit employees
         manager.recruitEmployee(agency, emp1);
@@ -130,7 +130,7 @@ public class Main {
         try {
             manager.changeSalary(agency.getEmployees().get(1), 60000);
         } catch (AdminException e) {
-            logger.error("Exception :" + e);
+            LOGGER.error("Exception :" + e);
         }
         agency.printEmployees();
 
@@ -148,49 +148,49 @@ public class Main {
         //Add bookings
         agency.addBooking(booking);
         agency.printBookings();
-        logger.debug("---------------");
+        LOGGER.debug("---------------");
 
         Util.printAvailableStatuses();
-        logger.debug("---------------");
+        LOGGER.debug("---------------");
 
         //Exceptions
         try {
             carReservation2.removeDriver(null);
         } catch (DriverException e) {
-            logger.error("DriverException : " + e);
+            LOGGER.error("DriverException : " + e);
         }
         try {
             flightReservation.removePassenger(null);
         } catch (PassengerException e) {
-            logger.error("PassengerException : " + e);
+            LOGGER.error("PassengerException : " + e);
         }
 
         try {
             agency.addEmployee(null);
         } catch (TravelAgencyException e) {
-            logger.error("TravelAgencyException :"  + e);
+            LOGGER.error("TravelAgencyException :" + e);
         }
         manager.recruitEmployee(agency, null);
         try {
             manager.changeSalary(null, 50000);
         } catch (AdminException e) {
-            logger.error("AdminException : " + e);
+            LOGGER.error("AdminException : " + e);
         }
         try {
             booking.setReservations(null);
             booking.cancelBooking();
         } catch (BookingException e) {
-            logger.error("BookingException : " + e);
+            LOGGER.error("BookingException : " + e);
         }
         booking.printInvoice();
 
-//        Util.printFile("dummyFolder1/dummyFile1.txt");
-//        try {
-//            Util.printFile("dummyFolder2/", "dummyFile2.txt");
-//        } catch (IOException e) {
-//           logger.error("Exception in main:" + e);
-//        }
-//        Util.printFile("dummyFolder3/", "dummyFile3", ".txt");
+        Util.printFile("dummyFolder1/dummyFile1.txt");
+        try {
+            Util.printFile("dummyFolder2/", "dummyFile2.txt");
+        } catch (IOException e) {
+            LOGGER.error("Exception in main:" + e);
+        }
+        Util.printFile("dummyFolder3/", "dummyFile3", ".txt");
 
     }
 }
