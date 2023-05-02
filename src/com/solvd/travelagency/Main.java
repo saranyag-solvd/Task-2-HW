@@ -5,8 +5,6 @@ import com.solvd.travelagency.exceptions.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
@@ -75,6 +73,7 @@ public class Main {
 
         // flight reservation
         Flight flight = new Flight("F0145", "Logan International", "JFK", "F26");
+        Flight flight1 = new Flight("Q0546", "JFK International", "BOS", "A12");
         flight.checkIn();
         flight.allowIn();
         flight.printDetails();
@@ -95,7 +94,8 @@ public class Main {
 
 
         // Create Booking
-        Booking booking = new Booking("b-3456", Util.getCurrentDate(), customer1, ccPayment);
+        Booking booking = new Booking("b-0001", Util.getCurrentDate(), customer1, ccPayment);
+        Booking booking1 = new Booking("b-0002", Util.getCurrentDate(), customer1, ccPayment);
 
         // add reservations
         booking.addReservation(hotelReservation);
@@ -136,6 +136,9 @@ public class Main {
 
         //Add flights
         agency.addFlight(flight);
+        agency.addFlight(flight1);
+        agency.addFlight(flight); // adding duplicate flight
+        agency.printFlights();
 
         //Add hotels
         agency.addHotels(hotel);
@@ -147,6 +150,7 @@ public class Main {
 
         //Add bookings
         agency.addBooking(booking);
+        agency.addBooking(booking1);
         agency.printBookings();
         LOGGER.debug("---------------");
 
@@ -177,6 +181,11 @@ public class Main {
             LOGGER.error("AdminException : " + e);
         }
         try {
+            manager.changeSalary(agency.getEmployees().get(1), -1000);
+        } catch (AdminException e) {
+            LOGGER.error("AdminException : " + e);
+        }
+        try {
             booking.setReservations(null);
             booking.cancelBooking();
         } catch (BookingException e) {
@@ -184,13 +193,6 @@ public class Main {
         }
         booking.printInvoice();
 
-        Util.printFile("dummyFolder1/dummyFile1.txt");
-        try {
-            Util.printFile("dummyFolder2/", "dummyFile2.txt");
-        } catch (IOException e) {
-            LOGGER.error("Exception in main:" + e);
-        }
-        Util.printFile("dummyFolder3/", "dummyFile3", ".txt");
 
     }
 }
