@@ -26,6 +26,9 @@ public class Manager extends Employee implements IAdminOperation {
         if (employee == null) {
             throw new AdminException("No employee found to change salary");
         }
+        if (newSalary < 0 || employee.getSalary() == newSalary) { // if Negative salary or same salary
+            throw new AdminException("Invalid Salary");
+        }
         employee.setSalary(newSalary);
         System.out.println("Employee " + employee.getEmployeeId() + " Salary updated to " + newSalary);
     }
