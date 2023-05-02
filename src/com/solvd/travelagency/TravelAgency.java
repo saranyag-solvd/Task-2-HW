@@ -2,35 +2,36 @@ package com.solvd.travelagency;
 
 import com.solvd.travelagency.exceptions.TravelAgencyException;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public final class TravelAgency {
     private String travelAgencyName;
     private ArrayList<Customer> customers;
 
-    private ArrayList<Booking> bookings;
-    private ArrayList<Employee> employees;
+//    private ArrayList<Booking> bookings;
+    private Map<String, Booking> bookings;
+    private CustomLinkedList<Employee> employees;
     private ArrayList<Hotel> hotels;
-    private ArrayList<Flight> flights;
+    private Set<Flight> flights;
 
     public TravelAgency(String travelAgencyName) {
         this.travelAgencyName = travelAgencyName;
         this.customers = new ArrayList<Customer>();
-        this.bookings = new ArrayList<Booking>();
-        this.employees = new ArrayList<Employee>();
+        this.bookings = new HashMap<>();
+        this.employees = new CustomLinkedList<>();
         this.hotels = new ArrayList<Hotel>();
-        this.flights = new ArrayList<Flight>();
+        this.flights = new HashSet<>();
     }
 
     public ArrayList<Customer> getCustomers() {
         return customers;
     }
 
-    public ArrayList<Booking> getBookings() {
+    public Map<String, Booking> getBookings() {
         return bookings;
     }
 
-    public ArrayList<Employee> getEmployees() {
+    public CustomLinkedList<Employee> getEmployees() {
         return employees;
     }
 
@@ -38,7 +39,7 @@ public final class TravelAgency {
         return hotels;
     }
 
-    public ArrayList<Flight> getFlights() {
+    public Set<Flight> getFlights() {
         return flights;
     }
 
@@ -62,10 +63,15 @@ public final class TravelAgency {
 
     }
 
+    public void addManager(Employee manager) {
+        employees.addFirst(manager);
+    }
+
     public void printEmployees() {
-        for (Employee employee : employees) {
-            System.out.println(employee);
-        }
+        employees.show();
+//        for (Employee employee : employees) {
+//            System.out.println(employee);
+//        }
     }
 
     public void printCustomers() {
@@ -75,7 +81,7 @@ public final class TravelAgency {
     }
 
     public void removeEmployee(Employee employee) {
-        employees.remove(employee);
+        //employees.remove(employee);
     }
 
 
@@ -98,13 +104,25 @@ public final class TravelAgency {
     }
 
     public void addBooking(Booking booking) {
-        bookings.add(booking);
+        bookings.put(booking.getBookingId(), booking);
     }
 
     public void printBookings() {
-        for (Booking booking : bookings) {
-            System.out.println(booking);
+//        for (Booking booking : bookings.values()) {
+//            System.out.println(booking);
+//        }
+        for (Map.Entry<String,Booking> entry : bookings.entrySet()) {
+            System.out.println("Key = " + entry.getKey() +
+                    ", Value = " + entry.getValue());
         }
+
+    }
+
+    public void printFlights() {
+        for (Flight flight : flights) {
+            System.out.println("Flight :" + flight);
+        }
+
     }
 
     public void removeBooking(Booking booking) {

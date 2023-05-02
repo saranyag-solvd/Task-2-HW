@@ -117,12 +117,9 @@ public class Main {
         //Travel Agency
         TravelAgency agency = new TravelAgency("Global Travels");
 
-        //Add employee
-        try {
-            agency.addEmployee(manager);
-        } catch (TravelAgencyException e) {
-            LOGGER.error("Exception:" + e);
-        }
+        //Add manager
+        agency.addManager(manager);
+
         //Recruit employees
         manager.recruitEmployee(agency, emp1);
         manager.recruitEmployee(agency, emp2);
