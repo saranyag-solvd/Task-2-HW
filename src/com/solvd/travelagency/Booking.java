@@ -1,21 +1,23 @@
 package com.solvd.travelagency;
 
-import java.util.ArrayList;
+import com.solvd.travelagency.exceptions.BookingException;
+
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Booking implements IBookingOperation {
     private String bookingId;
     private Date date;
     private Customer customer;
-    private List<Reservation> reservations;
+    private Map<String, Reservation> reservations;
     private Payment payment;
 
     public Booking(String bookingId, Date date, Customer customer, Payment payment) {
         this.bookingId = bookingId;
         this.date = date;
         this.customer = customer;
-        this.reservations = new ArrayList<>();
+        this.reservations = new HashMap<>();
         this.payment = payment;
     }
 
@@ -43,13 +45,13 @@ public class Booking implements IBookingOperation {
         this.customer = customer;
     }
 
-    public List<Reservation> getReservations() {
+    public Map<String, Reservation> getReservations() {
         return this.reservations;
     }
 
-    // public void setReservations(List<Reservation> reservations) {
-    //    this.reservations = reservations;
-    //}
+    public void setReservations(Map<String, Reservation> reservations) {
+        this.reservations = reservations;
+    }
 
 
     public Payment getPayment() {
@@ -62,8 +64,8 @@ public class Booking implements IBookingOperation {
 
     @Override
     public void createBooking() {
-        for (int i = 0; i < this.reservations.size(); i++) {
-            this.reservations.get(i).createReservation();
+        for (String key : this.reservations.keySet()) {
+            this.reservations.get(key).createReservation();
         }
         System.out.println("Booking created");
     }
@@ -73,11 +75,14 @@ public class Booking implements IBookingOperation {
     }
 
     @Override
-    public void cancelBooking() {
-        for (int i = 0; i < this.reservations.size(); i++) {
-            this.reservations.get(i).cancelReservation();
+    public void cancelBooking() throws BookingException {
+        if (this.reservations == null || this.reservations.size() == 0) {
+            throw new BookingException("No reservation found to cancel");
         }
 
+        for (String key : this.reservations.keySet()) {
+            this.reservations.get(key).cancelReservation();
+        }
         System.out.println("Booking cancelled");
     }
 
@@ -86,9 +91,13 @@ public class Booking implements IBookingOperation {
         System.out.println("Booking Details :" + this);
     }
 
-    public void addReservation(Reservation reservation) {
+    public void addReservation(String key, Reservation reservation) {
 
-        this.reservations.add(reservation);
+        this.reservations.put(key, reservation);
+    }
+
+    public void printInvoice() {
+        Util.printFile(this.bookingId);
     }
 
     @Override
