@@ -1,7 +1,9 @@
 package com.solvd.travelagency;
 
 
-import com.solvd.travelagency.exceptions.*;
+import com.solvd.travelagency.exceptions.AdminException;
+import com.solvd.travelagency.exceptions.BookingException;
+import com.solvd.travelagency.exceptions.PassengerException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -156,39 +158,6 @@ public class Main {
         LOGGER.debug("---------------");
 
         //Exceptions
-        try {
-            carReservation2.removeDriver(null);
-        } catch (DriverException e) {
-            LOGGER.error("DriverException : " + e);
-        }
-        try {
-            flightReservation.removePassenger(null);
-        } catch (PassengerException e) {
-            LOGGER.error("PassengerException : " + e);
-        }
-
-        try {
-            agency.addEmployee(null);
-        } catch (TravelAgencyException e) {
-            LOGGER.error("TravelAgencyException :" + e);
-        }
-        manager.recruitEmployee(agency, null);
-        try {
-            manager.changeSalary(null, 50000);
-        } catch (AdminException e) {
-            LOGGER.error("AdminException : " + e);
-        }
-        try {
-            manager.changeSalary(agency.getEmployees().get(1), -1000);
-        } catch (AdminException e) {
-            LOGGER.error("AdminException : " + e);
-        }
-        try {
-            booking.setReservations(null);
-            booking.cancelBooking();
-        } catch (BookingException e) {
-            LOGGER.error("BookingException : " + e);
-        }
         booking.printInvoice();
 
 
