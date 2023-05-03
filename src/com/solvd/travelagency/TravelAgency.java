@@ -2,14 +2,16 @@ package com.solvd.travelagency;
 
 import com.solvd.travelagency.exceptions.TravelAgencyException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class TravelAgency {
     private String travelAgencyName;
     private ArrayList<Customer> customers;
 
-//    private ArrayList<Booking> bookings;
-    private Map<String, Booking> bookings;
+
+    private ArrayList<Booking> bookings;
     private CustomLinkedList<Employee> employees;
     private ArrayList<Hotel> hotels;
     private Set<Flight> flights;
@@ -17,7 +19,7 @@ public final class TravelAgency {
     public TravelAgency(String travelAgencyName) {
         this.travelAgencyName = travelAgencyName;
         this.customers = new ArrayList<Customer>();
-        this.bookings = new HashMap<>();
+        this.bookings = new ArrayList<Booking>();
         this.employees = new CustomLinkedList<>();
         this.hotels = new ArrayList<Hotel>();
         this.flights = new HashSet<>();
@@ -27,7 +29,7 @@ public final class TravelAgency {
         return customers;
     }
 
-    public Map<String, Booking> getBookings() {
+    public ArrayList<Booking> getBookings() {
         return bookings;
     }
 
@@ -69,9 +71,7 @@ public final class TravelAgency {
 
     public void printEmployees() {
         employees.show();
-//        for (Employee employee : employees) {
-//            System.out.println(employee);
-//        }
+
     }
 
     public void printCustomers() {
@@ -104,18 +104,13 @@ public final class TravelAgency {
     }
 
     public void addBooking(Booking booking) {
-        bookings.put(booking.getBookingId(), booking);
+        bookings.add(booking);
     }
 
     public void printBookings() {
-//        for (Booking booking : bookings.values()) {
-//            System.out.println(booking);
-//        }
-        for (Map.Entry<String,Booking> entry : bookings.entrySet()) {
-            System.out.println("Key = " + entry.getKey() +
-                    ", Value = " + entry.getValue());
+        for (Booking booking : bookings) {
+            System.out.println(booking);
         }
-
     }
 
     public void printFlights() {

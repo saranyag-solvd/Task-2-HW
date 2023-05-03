@@ -172,42 +172,5 @@ public class CustomLinkedList<T> {
         }
     }
 
-    public static void main(String[] args) {
-        CustomLinkedList<String> cll = new CustomLinkedList<>();
-//        cll.add("1");
-//        cll.addLast("2");
-//        cll.addFirst("0");
-//        cll.add("3");
 
-//        cll.add(0, "1");
-//        cll.add(1, "2");
-//        cll.add(2, "3");
-//        cll.add(1, "1.5");
-//        cll.add(0, "0.5");
-//        System.out.println("0 :" + cll.get(0));
-//        System.out.println("5 :" + cll.get(5));
-//        System.out.println("4 :" + cll.get(4));
-//        System.out.println("2 :" + cll.get(2));
-
-        cll.remove(0);
-        cll.remove(3);
-        cll.add(0, "10");
-        cll.add(1, "20");
-        cll.add(2, "30");
-        cll.add(3, "40");
-
-        logger.debug("Length :" + cll.length);
-        cll.show();
-
-        cll.remove(2);
-        logger.debug("Length :" + cll.length);
-        cll.show();
-
-        cll.remove(0);
-        logger.debug("Length :" + cll.length);
-        cll.show();
-
-        cll.remove(2);
-        logger.debug(cll);
-    }
 }

@@ -98,9 +98,10 @@ public class Main {
         Booking booking1 = new Booking("b-0002", Util.getCurrentDate(), customer1, ccPayment);
 
         // add reservations
-        booking.addReservation(hotelReservation);
-        booking.addReservation(carReservation);
-        booking.addReservation(flightReservation);
+        booking.addReservation("hotel", hotelReservation);
+        booking.addReservation("car", carReservation);
+        booking.addReservation("flight", flightReservation);
+        LOGGER.debug("Reservations :" + booking.getReservations());
 
         booking.createBooking();
         booking.updateCustomerPhoneNumber("345-435-5869");
