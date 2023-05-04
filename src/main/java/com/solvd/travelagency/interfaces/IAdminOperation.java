@@ -1,5 +1,7 @@
-package com.solvd.travelagency;
+package com.solvd.travelagency.interfaces;
 
+import com.solvd.travelagency.Employee;
+import com.solvd.travelagency.TravelAgency;
 import com.solvd.travelagency.exceptions.AdminException;
 
 public interface IAdminOperation {

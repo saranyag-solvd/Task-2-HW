@@ -1,5 +1,9 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.interfaces.ICheckIn;
+import com.solvd.travelagency.interfaces.ICheckOut;
+import com.solvd.travelagency.interfaces.IPrintInfo;
+
 public class Hotel implements ICheckIn, ICheckOut, IPrintInfo {
     private String name;
     private Address address;
