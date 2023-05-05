@@ -1,5 +1,7 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.interfaces.IPrintInfo;
+
 public class Payment implements IPrintInfo {
     private String paymentMethod;
     private String confirmationNumber;

@@ -1,5 +1,8 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.interfaces.ICheckIn;
+import com.solvd.travelagency.interfaces.IPrintInfo;
+
 public class Flight implements ICheckIn, IPrintInfo {
     private String flightNumber;
     private String arrivalAirport;

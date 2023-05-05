@@ -1,4 +1,4 @@
-package com.solvd.travelagency;
+package com.solvd.travelagency.interfaces;
 
 import com.solvd.travelagency.exceptions.BookingException;
 
