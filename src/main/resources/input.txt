@@ -1,0 +1,1 @@
+WoRd Word While the most popular way to run Maven is to specify goals, Maven provides a number of command-line options to customize its behavior. They range from specifying values for properties, to varying the verbosity of the Maven output. It is useful to know some of the arguments, as they will often help with troubleshooting issues with MaVEN.

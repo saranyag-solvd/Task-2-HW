@@ -84,7 +84,7 @@ public class Util {
     public static void uniqueWords() {
 
         try {
-            String fileContent = FileUtils.readFileToString(new File("input.txt"), "UTF-8");
+            String fileContent = FileUtils.readFileToString(new File("src/main/resources/input.txt"), "UTF-8");
             LOGGER.debug("File Content :" + fileContent);
 
             Pattern pattern = Pattern.compile("\\w+");
@@ -94,7 +94,7 @@ public class Util {
             StringBuffer buf = new StringBuffer("Unique Words :");
             while (matcher.find()) {
                 String word = matcher.group();
-                if (StringUtils.countMatches(fileContent, word) == 1) {
+                if (StringUtils.countMatches(fileContent.toLowerCase(), word.toLowerCase()) == 1) {
                     uniqueCnt++;
                     buf.append(word).append(" ");
                 }
