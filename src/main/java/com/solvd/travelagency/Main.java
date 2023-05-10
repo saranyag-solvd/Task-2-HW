@@ -160,6 +160,8 @@ public class Main {
         //Exceptions
         booking.printInvoice();
 
+        //StringUtil & FileUtil
+        Util.uniqueWords("src/main/resources/input.txt", "output.txt");
 
     }
 }
