@@ -59,6 +59,8 @@ public class Customer extends Person {
     public String toString() {
         return "Customer{" +
                 "customerId=" + customerId +
+                ", Name=" + super.getName() +
+                ", age=" + super.getAge() +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +
                 '}';

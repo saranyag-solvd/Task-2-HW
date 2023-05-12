@@ -1,9 +1,11 @@
 package com.solvd.travelagency;
 
 import com.solvd.travelagency.exceptions.TravelAgencyException;
+import com.solvd.travelagency.interfaces.ISearch;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public final class TravelAgency {
@@ -122,6 +124,16 @@ public final class TravelAgency {
 
     public void removeBooking(Booking booking) {
         bookings.remove(booking);
+    }
+
+    public List<Customer> getCustomers(ISearch<Customer> fSearch){
+        List<Customer> result = new ArrayList<>();
+        for (Customer customer : this.customers) {
+            if (fSearch.search(customer)){
+                result.add(customer);
+            }
+        }
+        return result;
     }
 
 }

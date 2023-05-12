@@ -5,8 +5,14 @@ import com.solvd.travelagency.enums.*;
 import com.solvd.travelagency.exceptions.AdminException;
 import com.solvd.travelagency.exceptions.BookingException;
 import com.solvd.travelagency.exceptions.PassengerException;
+import com.solvd.travelagency.interfaces.IDetails;
+import com.solvd.travelagency.interfaces.IPrint;
+import com.solvd.travelagency.interfaces.ISearch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Date;
+import java.util.function.*;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
@@ -163,6 +169,40 @@ public class Main {
 
         //StringUtil & FileUtil
         Util.uniqueWords("src/main/resources/input.txt", "output.txt");
+        LOGGER.debug("---------------");
 
+        //Lambda using java.util.function
+        Consumer<Employee> c1 = emp -> LOGGER.debug("Employee salary is:" + emp.getSalary());
+        c1.accept(emp3);
+
+        LongPredicate lp1 = sal -> sal > 50000;
+        LOGGER.debug("Is Employee Salary > 50k ? " + lp1.test(emp3.getSalary()));
+
+        Predicate<Employee> p1 = emp -> emp.getDepartment() == Department.TRAVEL_AGENT;
+        LOGGER.debug("Is Employee a Travel Agent ? " + p1.test(emp3));
+
+        Function<Employee, String> f1 = emp -> emp.getDepartment().getName();
+        LOGGER.debug("Employee Department Name : " + f1.apply(emp3));
+
+        Supplier<Date> s1 = () -> Util.getCurrentDate();
+        LOGGER.debug("Current Date : " + s1.get());
+        LOGGER.debug("---------------");
+
+        //Customer Function interface Lambda
+        ISearch<Customer> searchByAge = customer -> customer.getAge() > 18;
+        LOGGER.debug("Customer Search by Age result : " + agency.getCustomers(searchByAge));
+        ISearch<Customer> searchByName = customer -> customer.getName().contains("Doe");
+        LOGGER.debug("Customer Search by Name result : " + agency.getCustomers(searchByName));
+
+        IPrint<Payment> paymentPrint = payment -> payment.printDetails();
+        paymentPrint.print(booking.getPayment());
+        IPrint<Employee> empPrint = employee -> LOGGER.debug("Employee : " + employee.toString());
+        empPrint.print(emp2);
+
+        IDetails<Payment, String> fPaymentMethod = payment -> payment.getPaymentMethod().getDescription();
+        LOGGER.debug("Payment method : " + fPaymentMethod.getDetail(booking.getPayment()));
+        IDetails<Employee, String> fEmpZip = employee -> employee.getAddress().getZipcode();
+        LOGGER.debug("Employee Zip : " + fEmpZip.getDetail(emp2));
+        LOGGER.debug("---------------");
     }
 }
