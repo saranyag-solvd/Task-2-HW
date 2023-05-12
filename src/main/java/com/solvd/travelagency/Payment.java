@@ -1,23 +1,24 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.enums.PaymentMethod;
 import com.solvd.travelagency.interfaces.IPrintInfo;
 
 public class Payment implements IPrintInfo {
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
     private String confirmationNumber;
     private double amount;
 
-    public Payment(String paymentMethod, String confirmationNumber, double amount) {
+    public Payment(PaymentMethod paymentMethod, String confirmationNumber, double amount) {
         this.paymentMethod = paymentMethod;
         this.confirmationNumber = confirmationNumber;
         this.amount = amount;
     }
 
-    public String getPaymentMethod() {
+    public PaymentMethod getPaymentMethod() {
         return this.paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 

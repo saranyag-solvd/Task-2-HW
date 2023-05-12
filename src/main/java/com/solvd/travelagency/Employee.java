@@ -1,14 +1,16 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.enums.Department;
+
 public class Employee extends Person {
     private int employeeId;
-    private int departmentNumber;
+    private Department department;
     private long salary;
 
-    public Employee(String name, int age, Address address, int employeeId, int departmentNumber, long salary) {
+    public Employee(String name, int age, Address address, int employeeId, Department department, long salary) {
         super(name, age, address);
         this.employeeId = employeeId;
-        this.departmentNumber = departmentNumber;
+        this.department = department;
         this.salary = salary;
     }
 
@@ -20,12 +22,12 @@ public class Employee extends Person {
         this.employeeId = employeeId;
     }
 
-    public int getDepartmentNumber() {
-        return this.departmentNumber;
+    public Department getDepartment() {
+        return this.department;
     }
 
-    public void setDepartmentNumber(int departmentNumber) {
-        this.departmentNumber = departmentNumber;
+    public void setDepartmentNumber(Department department) {
+        this.department = department;
     }
 
     public long getSalary() {
@@ -39,7 +41,7 @@ public class Employee extends Person {
     public String getEmployeeDetails() {
         return "Employee Details: Employee{" +
                 "employeeId=" + employeeId +
-                ", departmentNumber=" + departmentNumber +
+                ", department=" + department +
                 ", salary=" + salary +
                 '}';
     }
@@ -48,7 +50,7 @@ public class Employee extends Person {
     public String toString() {
         return "Employee{" +
                 "employeeId=" + employeeId +
-                ", departmentNumber=" + departmentNumber +
+                ", department=" + department +
                 ", salary=" + salary +
                 '}';
     }
