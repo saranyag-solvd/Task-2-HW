@@ -1,5 +1,6 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.enums.CarType;
 import com.solvd.travelagency.exceptions.DriverException;
 
 import java.util.ArrayList;
@@ -8,22 +9,22 @@ import java.util.List;
 import java.util.Objects;
 
 public class CarReservation extends Reservation {
-    private String carType;
+    private CarType carType;
     private List<Customer> drivers;
     private String carDetails;
 
-    public CarReservation(String reservationId, String status, Date fromDate, Date toDate, double amount, String carType, String carDetails) {
+    public CarReservation(String reservationId, String status, Date fromDate, Date toDate, double amount, CarType carType, String carDetails) {
         super(reservationId, status, fromDate, toDate, amount);
         this.carType = carType;
         this.drivers = new ArrayList<>();
         this.carDetails = carDetails;
     }
 
-    public String getCarType() {
+    public CarType getCarType() {
         return this.carType;
     }
 
-    public void setCarType(String carType) {
+    public void setCarType(CarType carType) {
         this.carType = carType;
     }
 
@@ -56,7 +57,7 @@ public class CarReservation extends Reservation {
         System.out.println(this);
     }
 
-    public void updateCarType(String carType) {
+    public void updateCarType(CarType carType) {
         this.setCarType(carType);
         System.out.println("Car type updated");
     }

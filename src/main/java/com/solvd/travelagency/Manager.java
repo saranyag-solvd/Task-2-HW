@@ -1,5 +1,6 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.enums.Department;
 import com.solvd.travelagency.exceptions.AdminException;
 import com.solvd.travelagency.exceptions.TravelAgencyException;
 import com.solvd.travelagency.interfaces.IAdminOperation;
@@ -9,8 +10,8 @@ import org.apache.logging.log4j.Logger;
 public class Manager extends Employee implements IAdminOperation {
     private static final Logger LOGGER = LogManager.getLogger(Manager.class);
 
-    public Manager(String name, int age, Address address, int employeeId, int departmentNumber, long salary) {
-        super(name, age, address, employeeId, departmentNumber, salary);
+    public Manager(String name, int age, Address address, int employeeId, long salary) {
+        super(name, age, address, employeeId, Department.MANAGER, salary);
     }
 
     @Override

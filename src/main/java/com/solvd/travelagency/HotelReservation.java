@@ -1,15 +1,17 @@
 package com.solvd.travelagency;
 
+import com.solvd.travelagency.enums.RoomType;
+
 import java.util.Date;
 import java.util.Objects;
 
 public class HotelReservation extends Reservation {
-    private String roomType;
+    private RoomType roomType;
     private int noOfGuest;
     private Hotel hotel;
     private String amenities;
 
-    public HotelReservation(String reservationId, String status, Date fromDate, Date toDate, double amount, String roomType, int noOfGuest, Hotel hotel, String amenities) {
+    public HotelReservation(String reservationId, String status, Date fromDate, Date toDate, double amount, RoomType roomType, int noOfGuest, Hotel hotel, String amenities) {
         super(reservationId, status, fromDate, toDate, amount);
         this.roomType = roomType;
         this.noOfGuest = noOfGuest;
@@ -17,11 +19,11 @@ public class HotelReservation extends Reservation {
         this.amenities = amenities;
     }
 
-    public String getRoomType() {
+    public RoomType getRoomType() {
         return this.roomType;
     }
 
-    public void setRoomType(String roomType) {
+    public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
 

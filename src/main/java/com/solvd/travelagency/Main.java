@@ -1,11 +1,18 @@
 package com.solvd.travelagency;
 
 
+import com.solvd.travelagency.enums.*;
 import com.solvd.travelagency.exceptions.AdminException;
 import com.solvd.travelagency.exceptions.BookingException;
 import com.solvd.travelagency.exceptions.PassengerException;
+import com.solvd.travelagency.interfaces.IDetails;
+import com.solvd.travelagency.interfaces.IPrint;
+import com.solvd.travelagency.interfaces.ISearch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Date;
+import java.util.function.*;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
@@ -15,15 +22,15 @@ public class Main {
         //Create Manager
         Address mgrAddress = new Address("26 grove st", "Boston", "MA", "01233", "USA");
         LOGGER.debug("Manager Address :" + mgrAddress.getAddress());
-        Manager manager = new Manager("Sam Adams", 47, mgrAddress, 1, 1, 120000);
+        Manager manager = new Manager("Sam Adams", 47, mgrAddress, 1, 120000);
         LOGGER.debug("Manager Details :" + manager.getEmployeeDetails());
 
         //Create Employees
         Address empAddress = new Address("12 robert st", "Hartford", "CT", "34343", "USA");
         LOGGER.debug("Employee Address :" + empAddress.getAddress());
-        Employee emp1 = new Employee("Adam Smith", 37, empAddress, 101, 2, 50000);
-        Employee emp2 = new Employee("Rick Smith", 19, empAddress, 102, 2, 40000);
-        Employee emp3 = new Employee("Jane Smith", 31, empAddress, 103, 2, 48000);
+        Employee emp1 = new Employee("Adam Smith", 37, empAddress, 101, Department.TRAVEL_AGENT, 50000);
+        Employee emp2 = new Employee("Rick Smith", 19, empAddress, 102, Department.HELPDESK, 40000);
+        Employee emp3 = new Employee("Jane Smith", 31, empAddress, 103, Department.TRAVEL_AGENT, 48000);
         LOGGER.debug("Employee 1 Details :" + emp1.getEmployeeDetails());
         LOGGER.debug("Employee 2 Details :" + emp2.getEmployeeDetails());
         LOGGER.debug("Employee 3 Details :" + emp3.getEmployeeDetails());
@@ -40,7 +47,7 @@ public class Main {
 
 
         //Create Payment
-        Payment ccPayment = new Payment("CreditCard", "c-1234", 178.90);
+        Payment ccPayment = new Payment(PaymentMethod.CREDIT, "c-1234", 178.90);
         ccPayment.printDetails();
         LOGGER.debug("---------------");
 
@@ -52,7 +59,7 @@ public class Main {
         hotel.allowIn();
         hotel.checkOut();
         hotel.printDetails();
-        HotelReservation hotelReservation = new HotelReservation("hr-8765", Status.BOOKED, Util.getDateFromStr("05/13/2023"), Util.getDateFromStr("05/17/2023"), 589.65, "Suite", 4, hotel, "Swimming pool, gym");
+        HotelReservation hotelReservation = new HotelReservation("hr-8765", Status.BOOKED, Util.getDateFromStr("05/13/2023"), Util.getDateFromStr("05/17/2023"), 589.65, RoomType.SUITE, 4, hotel, "Swimming pool, gym");
         hotelReservation.createReservation();
         hotelReservation.updateGuest(5);
         hotelReservation.viewReservation();
@@ -60,16 +67,16 @@ public class Main {
         LOGGER.debug("---------------");
 
         // car reservation
-        CarReservation carReservation = new CarReservation("cr-676334", Status.BOOKED, Util.getDateFromStr("05/13/2023"), Util.getDateFromStr("05/17/2023"), 400.50, "suv", "7seaters");
+        CarReservation carReservation = new CarReservation("cr-676334", Status.BOOKED, Util.getDateFromStr("05/13/2023"), Util.getDateFromStr("05/17/2023"), 400.50, CarType.SUV, "7seaters");
         carReservation.addDriver(customer1);
         carReservation.addDriver(customer2);
 //        carReservation.removeDriver(customer2);
         carReservation.createReservation();
-        carReservation.updateCarType("Sedan");
+        carReservation.updateCarType(CarType.SEDAN);
         carReservation.viewReservation();
         carReservation.cancelReservation();
 
-        CarReservation carReservation2 = new CarReservation("cr-676334", Status.BOOKED, Util.getDateFromStr("05/23/2023"), Util.getDateFromStr("05/29/2023"), 900.0, "Sedan", "electric");
+        CarReservation carReservation2 = new CarReservation("cr-676334", Status.BOOKED, Util.getDateFromStr("05/23/2023"), Util.getDateFromStr("05/29/2023"), 900.0, CarType.SEDAN, "electric");
         LOGGER.debug("Car Reservations equal ? " + carReservation.equals(carReservation2));
         LOGGER.debug("---------------");
 
@@ -100,9 +107,9 @@ public class Main {
         Booking booking1 = new Booking("b-0002", Util.getCurrentDate(), customer1, ccPayment);
 
         // add reservations
-        booking.addReservation("hotel", hotelReservation);
-        booking.addReservation("car", carReservation);
-        booking.addReservation("flight", flightReservation);
+        booking.addReservation(ReservationType.HOTEL.getDescription(), hotelReservation);
+        booking.addReservation(ReservationType.CAR.getDescription(), carReservation);
+        booking.addReservation(ReservationType.FLIGHT.getDescription(), flightReservation);
         LOGGER.debug("Reservations :" + booking.getReservations());
 
         booking.createBooking();
@@ -162,6 +169,40 @@ public class Main {
 
         //StringUtil & FileUtil
         Util.uniqueWords("src/main/resources/input.txt", "output.txt");
+        LOGGER.debug("---------------");
 
+        //Lambda using java.util.function
+        Consumer<Employee> c1 = emp -> LOGGER.debug("Employee salary is:" + emp.getSalary());
+        c1.accept(emp3);
+
+        LongPredicate lp1 = sal -> sal > 50000;
+        LOGGER.debug("Is Employee Salary > 50k ? " + lp1.test(emp3.getSalary()));
+
+        Predicate<Employee> p1 = emp -> emp.getDepartment() == Department.TRAVEL_AGENT;
+        LOGGER.debug("Is Employee a Travel Agent ? " + p1.test(emp3));
+
+        Function<Employee, String> f1 = emp -> emp.getDepartment().getName();
+        LOGGER.debug("Employee Department Name : " + f1.apply(emp3));
+
+        Supplier<Date> s1 = () -> Util.getCurrentDate();
+        LOGGER.debug("Current Date : " + s1.get());
+        LOGGER.debug("---------------");
+
+        //Customer Function interface Lambda
+        ISearch<Customer> searchByAge = customer -> customer.getAge() > 18;
+        LOGGER.debug("Customer Search by Age result : " + agency.getCustomers(searchByAge));
+        ISearch<Customer> searchByName = customer -> customer.getName().contains("Doe");
+        LOGGER.debug("Customer Search by Name result : " + agency.getCustomers(searchByName));
+
+        IPrint<Payment> paymentPrint = payment -> payment.printDetails();
+        paymentPrint.print(booking.getPayment());
+        IPrint<Employee> empPrint = employee -> LOGGER.debug("Employee : " + employee.toString());
+        empPrint.print(emp2);
+
+        IDetails<Payment, String> fPaymentMethod = payment -> payment.getPaymentMethod().getDescription();
+        LOGGER.debug("Payment method : " + fPaymentMethod.getDetail(booking.getPayment()));
+        IDetails<Employee, String> fEmpZip = employee -> employee.getAddress().getZipcode();
+        LOGGER.debug("Employee Zip : " + fEmpZip.getDetail(emp2));
+        LOGGER.debug("---------------");
     }
 }
