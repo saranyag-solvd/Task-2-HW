@@ -8,11 +8,16 @@ import com.solvd.travelagency.exceptions.PassengerException;
 import com.solvd.travelagency.interfaces.IDetails;
 import com.solvd.travelagency.interfaces.IPrint;
 import com.solvd.travelagency.interfaces.ISearch;
+import com.solvd.travelagency.utils.ReflectionUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.*;
+import java.util.stream.Collectors;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
@@ -167,10 +172,12 @@ public class Main {
         //Exceptions
         booking.printInvoice();
 
+        LOGGER.debug("---------------### StringUtil & FileUtil ###---------------");
         //StringUtil & FileUtil
         Util.uniqueWords("src/main/resources/input.txt", "output.txt");
         LOGGER.debug("---------------");
 
+        LOGGER.debug("---------------### Lambda using java.util.function ###---------------");
         //Lambda using java.util.function
         Consumer<Employee> c1 = emp -> LOGGER.debug("Employee salary is:" + emp.getSalary());
         c1.accept(emp3);
@@ -188,6 +195,7 @@ public class Main {
         LOGGER.debug("Current Date : " + s1.get());
         LOGGER.debug("---------------");
 
+        LOGGER.debug("---------------### Custom Lambda ###---------------");
         //Customer Function interface Lambda
         ISearch<Customer> searchByAge = customer -> customer.getAge() > 18;
         LOGGER.debug("Customer Search by Age result : " + agency.getCustomers(searchByAge));
@@ -203,6 +211,63 @@ public class Main {
         LOGGER.debug("Payment method : " + fPaymentMethod.getDetail(booking.getPayment()));
         IDetails<Employee, String> fEmpZip = employee -> employee.getAddress().getZipcode();
         LOGGER.debug("Employee Zip : " + fEmpZip.getDetail(emp2));
+        LOGGER.debug("---------------");
+
+        LOGGER.debug("---------------### Streams ###---------------");
+        //Stream #1 with non terminal (.filter .map) & terminal (.collect)
+        List<String> filteredFlightNumbers = agency.getFlights().stream()
+                .filter(flight2 -> flight2.getDestinationAirport().equals("JFK"))
+                .map(flight2 -> flight2.getFlightNumber()).collect(Collectors.toList());
+        LOGGER.debug("Stream #1 - Filtered Flight Numbers :" + filteredFlightNumbers);
+
+        //Stream #2 with non terminal (.distinct) & terminal (.count)
+        long flightCount = agency.getFlights().stream().distinct().count();
+        LOGGER.debug("Stream #2 - Flight Count :" + flightCount);
+
+        //Stream #3 with non terminal (.map .sorted) & terminal (.collect)
+        List<String> sortedFlightNumbers = agency.getFlights().stream()
+                .map(flight2 -> flight2.getFlightNumber()).sorted().collect(Collectors.toList());
+        LOGGER.debug("Stream #3 - Sorted Flight Numbers :" + sortedFlightNumbers);
+
+        //Stream #4 with terminal (.anyMatch)
+        boolean bostonFlight = agency.getFlights().stream()
+                .anyMatch(flight2 -> flight2.getDestinationAirport().equals("BOS"));
+        LOGGER.debug("Stream #4 - Flight to BOS :" + bostonFlight);
+
+        //Stream #5 with non terminal (.map) & terminal (.reduce)
+        Optional<String> names = agency.getCustomers().stream()
+                .map(customer -> customer.getName()).reduce((name1, name2) -> name1 + ", " + name2);
+        LOGGER.debug("Stream #5 - Customer Names :" + names);
+
+        //Stream #6 with non terminal (.map) & terminal (.min)
+        Optional<Integer> minAge = agency.getCustomers().stream()
+                .map(customer -> customer.getAge()).min(Comparator.naturalOrder());
+        LOGGER.debug("Stream #6 - Customer Min Age :" + minAge);
+
+        //Stream #7 with non terminal (.limit) & terminal (.count)
+        long count = agency.getBookings().stream()
+                .limit(1).count();
+        LOGGER.debug("Stream #7 - Limited Bookings :" + count);
+
+        LOGGER.debug("---------------");
+
+        LOGGER.debug("---------------### Reflection ###---------------");
+
+        Class clazz = ReflectionUtil.getaClass();
+
+        ReflectionUtil.printMethods(clazz);
+        LOGGER.debug("---------------");
+
+        ReflectionUtil.printFields(clazz);
+        LOGGER.debug("---------------");
+
+        ReflectionUtil.printConstructors(clazz);
+        LOGGER.debug("---------------");
+
+        TravelAgency refAgency = ReflectionUtil.instantiateObject(clazz);
+        LOGGER.debug("---------------");
+
+        ReflectionUtil.invokeMethod(clazz, refAgency);
         LOGGER.debug("---------------");
     }
 }
