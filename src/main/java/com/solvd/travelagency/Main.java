@@ -253,7 +253,7 @@ public class Main {
 
         LOGGER.debug("---------------### Reflection ###---------------");
 
-        Class clazz = ReflectionUtil.getaClass();
+        Class clazz = ReflectionUtil.getaClass("com.solvd.travelagency.TravelAgency");
 
         ReflectionUtil.printMethods(clazz);
         LOGGER.debug("---------------");
@@ -264,10 +264,12 @@ public class Main {
         ReflectionUtil.printConstructors(clazz);
         LOGGER.debug("---------------");
 
-        TravelAgency refAgency = ReflectionUtil.instantiateObject(clazz);
+        TravelAgency refAgency = (TravelAgency) ReflectionUtil.instantiateObject(clazz, "NameByReflection");
+        LOGGER.debug("Instantiated Agency Name :" + refAgency.getTravelAgencyName());
         LOGGER.debug("---------------");
 
-        ReflectionUtil.invokeMethod(clazz, refAgency);
+        ReflectionUtil.invokeMethod(clazz, refAgency, "setTravelAgencyName", "UpdatedNameByReflection");
+        LOGGER.debug("Updated Agency Name :" + refAgency.getTravelAgencyName());
         LOGGER.debug("---------------");
     }
 }

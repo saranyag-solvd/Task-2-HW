@@ -1,6 +1,5 @@
 package com.solvd.travelagency.utils;
 
-import com.solvd.travelagency.TravelAgency;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,40 +9,40 @@ import java.util.Arrays;
 public class ReflectionUtil {
     private static final Logger LOGGER = LogManager.getLogger(ReflectionUtil.class);
 
-    public static Class getaClass() {
+    public static Class getaClass(String className) {
         Class clazz = null;
         try {
-            clazz = Class.forName("com.solvd.travelagency.TravelAgency");
+            clazz = Class.forName(className);
         } catch (ClassNotFoundException e) {
             LOGGER.error("Exception :" + e);
         }
         return clazz;
     }
 
-    public static void invokeMethod(Class clazz, TravelAgency agency) {
+    public static void invokeMethod(Class clazz, Object obj, String methodName, String value) {
         Method setName = null;
         try {
-            setName = clazz.getDeclaredMethod("setTravelAgencyName", String.class);
-            setName.invoke(agency, "UpdatedNameByReflection");
+            setName = clazz.getDeclaredMethod(methodName, String.class);
+            setName.invoke(obj, value);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             LOGGER.error("Exception :" + e);
         }
-        LOGGER.debug("Updated Agency Name :" + agency.getTravelAgencyName());
+
     }
 
-    public static TravelAgency instantiateObject(Class clazz) {
+    public static Object instantiateObject(Class clazz, String value) {
         Constructor constructor = null;
-        TravelAgency agency = null;
+        Object obj = null;
         try {
             constructor = clazz.getConstructor(String.class);
-            agency = (TravelAgency) constructor.newInstance("NameByReflection");
+            obj = constructor.newInstance(value);
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
                  InvocationTargetException e) {
             LOGGER.error("Exception :" + e);
         }
 
-        LOGGER.debug("Instantiated Agency Name :" + agency.getTravelAgencyName());
-        return agency;
+
+        return obj;
     }
 
     public static void printConstructors(Class clazz) {
