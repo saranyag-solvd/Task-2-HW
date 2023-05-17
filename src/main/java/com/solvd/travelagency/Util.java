@@ -86,12 +86,11 @@ public class Util {
         try {
             String fileContent = readFile(inputFile);
             LOGGER.debug("File Content :" + fileContent);
-
             StringBuffer buf = getUniqueWords(fileContent);
             LOGGER.debug("Output :" + buf);
             writeFile(outputFile, buf.toString());
         } catch (Exception e) {
-           LOGGER.error("Exception:" + e);
+            LOGGER.error("Exception:" + e);
         }
     }
 
@@ -111,7 +110,6 @@ public class Util {
         Pattern pattern = Pattern.compile("\\w+");
         Matcher matcher = pattern.matcher(fileContent);
         int wordsCnt = 0, uniqueCnt = 0;
-
         StringBuffer buf = new StringBuffer("Unique Words :");
         while (matcher.find()) {
             String word = matcher.group();
@@ -124,7 +122,6 @@ public class Util {
 
         buf.insert(0, "Unique Words Count :" + uniqueCnt + "\n\n");
         buf.insert(0, "Words Count :" + wordsCnt + "\n");
-
         return buf;
     }
 

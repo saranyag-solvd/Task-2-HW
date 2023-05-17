@@ -40,8 +40,6 @@ public class ReflectionUtil {
                  InvocationTargetException e) {
             LOGGER.error("Exception :" + e);
         }
-
-
         return obj;
     }
 
@@ -54,7 +52,6 @@ public class ReflectionUtil {
             buf.append(constructor.getName()).append(" ");
             buf.append("(").append(Arrays.stream(constructor.getParameters())
                     .map(parameter -> buf.append(parameter.getParameterizedType().getTypeName() + " " + parameter.getName())).count()).append(")").append(" ");
-
             LOGGER.debug(buf.toString());
         }
     }
@@ -67,7 +64,6 @@ public class ReflectionUtil {
             buf.append(Modifier.toString(field.getModifiers())).append(" ");
             buf.append(field.getType().getName()).append(" ");
             buf.append(field.getName()).append(" ");
-
             LOGGER.debug(buf.toString());
         }
     }
@@ -82,7 +78,6 @@ public class ReflectionUtil {
             buf.append(method.getName()).append(" ");
             buf.append("(").append(Arrays.stream(method.getParameters())
                     .map(parameter -> buf.append(parameter.getParameterizedType().getTypeName() + " " + parameter.getName())).count()).append(")").append(" ");
-
             LOGGER.debug(buf.toString());
         }
     }
