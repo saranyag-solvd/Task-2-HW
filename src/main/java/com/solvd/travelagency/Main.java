@@ -8,6 +8,9 @@ import com.solvd.travelagency.exceptions.PassengerException;
 import com.solvd.travelagency.interfaces.IDetails;
 import com.solvd.travelagency.interfaces.IPrint;
 import com.solvd.travelagency.interfaces.ISearch;
+import com.solvd.travelagency.thread.ConnectionExecutor;
+import com.solvd.travelagency.thread.ThreadUsingRunnable;
+import com.solvd.travelagency.thread.ThreadUsingThread;
 import com.solvd.travelagency.utils.ReflectionUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -271,5 +274,19 @@ public class Main {
         ReflectionUtil.invokeMethod(clazz, refAgency, "setTravelAgencyName", "UpdatedNameByReflection");
         LOGGER.debug("Updated Agency Name :" + refAgency.getTravelAgencyName());
         LOGGER.debug("---------------");
+
+        LOGGER.debug("---------------### Threads ###---------------");
+        Thread thread1 = new ThreadUsingThread();
+        thread1.setName("thread1-ThreadUsingThread");
+        thread1.start();
+
+        Thread thread2 = new Thread(new ThreadUsingRunnable());
+        thread2.setName("thread2-ThreadUsingRunnable");
+        thread2.start();
+
+        ConnectionExecutor executor = new ConnectionExecutor();
+        executor.executeThreads();
+        executor.executeCompletableFutures();
+        executor.executeExecutorService();
     }
 }
